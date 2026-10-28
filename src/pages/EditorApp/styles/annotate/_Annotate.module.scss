@@ -1,0 +1,595 @@
+@use "../global/variables.scss" as *;
+
+.annotate {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: $color-light-grey;
+  font-family: $font-medium;
+  color: $color-text-primary;
+  z-index: 10;
+}
+
+.nav {
+  height: 64px;
+  flex: 0 0 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: #fff;
+  border-bottom: 1px solid $color-border;
+}
+.navLeft {
+  cursor: pointer;
+  img {
+    height: 26px;
+  }
+}
+.navCenter {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.beta {
+  background: $color-primary;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 20px;
+}
+.navRight {
+  display: flex;
+  gap: 8px;
+}
+
+.toolbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px 16px;
+  background: #fff;
+  border-bottom: 1px solid $color-border;
+}
+.toolGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.divider {
+  width: 1px;
+  height: 32px;
+  background: $color-border;
+  margin: 0 6px;
+}
+.tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 52px;
+  padding: 6px 6px 4px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  color: $color-text-primary;
+  font-family: $font-medium;
+  font-size: 11px;
+  cursor: pointer;
+  &:hover {
+    background: $color-light-grey;
+  }
+}
+.toolActive {
+  background: $color-primary-transparent !important;
+  color: $color-primary;
+}
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: $color-text-primary;
+  cursor: pointer;
+  &:hover:not(:disabled) {
+    background: $color-light-grey;
+  }
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+}
+.menuWrap {
+  position: relative;
+}
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  width: 300px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.menuTitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $color-text-secondary;
+  margin: 6px 2px 2px;
+}
+%textPreset {
+  text-align: left;
+  border: 1px solid $color-border;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  color: $color-text-primary;
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+.textPresetTitle {
+  @extend %textPreset;
+  font-family: $font-bold;
+  font-size: 20px;
+}
+.textPresetSubtitle {
+  @extend %textPreset;
+  font-family: $font-medium;
+  font-size: 15px;
+}
+.textPresetBody {
+  @extend %textPreset;
+  font-family: $font-medium;
+  font-size: 12px;
+  color: $color-text-secondary;
+}
+.templateGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.templateBtn {
+  @extend %textPreset;
+  font-size: 12px;
+  text-align: center;
+}
+.shapeGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+.shapeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: #6e7684;
+  cursor: pointer;
+  &:hover {
+    background: $color-light-grey;
+    color: $color-primary;
+  }
+}
+.swatches {
+  display: flex;
+  gap: 4px;
+  margin-right: 6px;
+}
+.swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  padding: 0;
+}
+.swatchActive {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}
+.widthSelect {
+  height: 30px;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  padding: 0 6px;
+  font-family: $font-medium;
+}
+
+.error {
+  background: $color-red-light;
+  color: $color-red;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+}
+
+.inspector {
+  flex: 0 0 280px;
+  width: 280px;
+  margin: 12px 0 12px 12px;
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+.inspectorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inspectorTitle {
+  font-family: $font-bold;
+  font-size: 15px;
+}
+.inspectorBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sectionTitle {
+  font-family: $font-bold;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  label {
+    color: $color-text-secondary;
+    flex: 0 0 82px;
+  }
+  select {
+    width: 100%;
+    height: 30px;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    padding: 0 6px;
+    font-family: $font-medium;
+  }
+}
+.rowControl {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.textArea {
+  width: 100%;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-family: $font-medium;
+  resize: vertical;
+}
+.textInput,
+.numberInput {
+  width: 100%;
+  height: 30px;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  padding: 0 8px;
+  font-family: $font-medium;
+}
+.numberInput {
+  width: 90px;
+}
+.colorInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  input[type="color"] {
+    width: 28px;
+    height: 28px;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+  }
+  span {
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+  }
+}
+.linkBtn {
+  border: none;
+  background: none;
+  color: $color-primary;
+  cursor: pointer;
+  font-size: 12px;
+}
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  input {
+    flex: 1;
+    accent-color: $color-primary;
+  }
+  span {
+    width: 44px;
+    text-align: right;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+}
+.segmented {
+  display: flex;
+  background: $color-light-grey;
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+  button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    padding: 6px 4px;
+    font-family: $font-medium;
+    font-size: 12px;
+    color: $color-text-secondary;
+    cursor: pointer;
+  }
+}
+.segActive {
+  background: #fff !important;
+  color: $color-text-primary !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.inlineBtns {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid $color-border;
+    background: #fff;
+    border-radius: 8px;
+    padding: 5px 9px;
+    font-family: $font-medium;
+    font-size: 12px;
+    cursor: pointer;
+  }
+}
+.animGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.animBtn {
+  border: 1px solid $color-border;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 4px;
+  font-family: $font-medium;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+.animActive {
+  border-color: $color-primary;
+  background: $color-primary-transparent;
+  color: $color-primary;
+}
+.hint {
+  color: $color-text-secondary;
+  line-height: 1.45;
+  margin: 0;
+}
+.tips {
+  margin: 0;
+  padding-left: 18px;
+  color: $color-text-secondary;
+  line-height: 1.8;
+  b {
+    color: $color-text-primary;
+    font-family: $font-bold;
+    font-weight: normal;
+  }
+}
+.muted {
+  color: $color-text-secondary;
+  font-size: 12px;
+}
+
+.stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.stageInner {
+  position: relative;
+  line-height: 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+}
+.frameCanvas {
+  display: block;
+}
+.fabricHost {
+  position: absolute;
+  inset: 0;
+}
+.hiddenVideo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.loading {
+  position: absolute;
+  color: $color-text-secondary;
+}
+
+.timeline {
+  flex: 0 0 auto;
+  background: #fff;
+  border-top: 1px solid $color-border;
+  padding: 8px 24px 12px;
+  user-select: none;
+}
+.transport {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.playBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: $color-text-primary;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.timecode {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+}
+.trackArea {
+  position: relative;
+}
+.ruler {
+  position: relative;
+  height: 22px;
+  border-bottom: 1px solid $color-border;
+  cursor: pointer;
+}
+.tick {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-left: 1px solid $color-border;
+  span {
+    position: absolute;
+    left: 4px;
+    top: 3px;
+    font-size: 10px;
+    color: $color-text-secondary;
+    white-space: nowrap;
+  }
+}
+.lanes {
+  position: relative;
+  max-height: 200px;
+  min-height: 60px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 6px 0;
+  cursor: pointer;
+}
+.videoLane {
+  height: 18px;
+  border-radius: 6px;
+  background: repeating-linear-gradient(90deg, #dfe3ea 0 40px, #e8ebf0 40px 80px);
+  margin-bottom: 6px;
+}
+.lane {
+  position: relative;
+  height: 26px;
+  margin-bottom: 4px;
+}
+.bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 7px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: grab;
+  opacity: 0.85;
+  &:active {
+    cursor: grabbing;
+  }
+}
+.barSelected {
+  opacity: 1;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px $color-primary;
+}
+.barLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.handle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  cursor: ew-resize;
+  background: rgba(0, 0, 0, 0.18);
+}
+.handleRight {
+  left: auto;
+  right: 0;
+}
+.playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: $color-red;
+  pointer-events: none;
+}

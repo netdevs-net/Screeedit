@@ -26,6 +26,9 @@ const convertWebmToMp4 = lazyMp4Util(() =>
   import("../Editor/utils/convertWebmToMp4"),
 );
 const cropVideo = lazyMp4Util(() => import("../Editor/utils/cropVideo"));
+const annotateVideo = lazyMp4Util(() =>
+  import("../Editor/utils/annotateVideo"),
+);
 const cutVideo = lazyMp4Util(() => import("../Editor/utils/cutVideo"));
 const muteVideo = lazyMp4Util(() => import("../Editor/utils/muteVideo"));
 const reencodeVideo = lazyMp4Util(() =>
@@ -47,6 +50,7 @@ const toBase64 = (blob) =>
 // duration fix still runs (metadata repair, not an edit) for seekability.
 const VIEWER_REJECTED_OPS = new Set([
   "add-audio-to-video",
+  "annotate-video",
   "base64-to-blob",
   "crop-video",
   "cut-video",
@@ -215,6 +219,26 @@ export async function runEditorOp(message, reply, { viewer = false } = {}) {
             height: message.height,
           },
           (progress) => reply({ type: "ffmpeg-progress", progress }),
+        );
+        const base64 = await toBase64(blob);
+        reply({
+          type: "updated-blob",
+          base64,
+          topLevel: true,
+          _opId: message._opId,
+        });
+        break;
+      }
+
+      case "annotate-video": {
+        const blob = await annotateVideo(
+          message.blob,
+          message.overlayDoc,
+          (progress) =>
+            reply({
+              type: "ffmpeg-progress",
+              progress: Math.round(progress * 100),
+            }),
         );
         const base64 = await toBase64(blob);
         reply({

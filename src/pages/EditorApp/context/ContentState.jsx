@@ -296,6 +296,13 @@ const ContentState = (props) => {
     redoDisabled: true,
     duration: 0,
     mode: "player",
+    annotating: false,
+    fromAnnotate: false,
+    // Timeline overlays: the editable doc, the blob they were drawn over, and
+    // the blob burning them produced (so re-opening the mode can re-edit).
+    overlayDoc: null,
+    overlayBaseBlob: null,
+    overlayBurnedBlob: null,
     ffmpegLoaded: false,
     frame: null,
     pendingCropEntry: false,
@@ -815,6 +822,7 @@ const ContentState = (props) => {
     muting: false,
     cropping: false,
     reencoding: false,
+    annotating: false,
   };
 
   const undo = useCallback(() => {
@@ -2275,6 +2283,8 @@ const ContentState = (props) => {
 
           ...(prev.fromCropper && { mode: "player", fromCropper: false }),
           ...(prev.fromAudio && { mode: "player", fromAudio: false }),
+          ...(prev.fromAnnotate && { mode: "player", fromAnnotate: false }),
+          annotating: false,
         };
       });
 
@@ -2399,10 +2409,14 @@ const ContentState = (props) => {
 
       // fall back to webm/rawBlob even if conversion fails
       setContentState((prev) => {
-        const wasEditing = prev.isFfmpegRunning && (prev.cutting || prev.trimming || prev.muting || prev.cropping || prev.reencoding);
+        const wasEditing = prev.isFfmpegRunning && (prev.cutting || prev.trimming || prev.muting || prev.cropping || prev.reencoding || prev.annotating);
         return {
           ...prev,
-          noffmpeg: true,
+          // A failed edit op leaves the source blob intact, so keep editing
+          // available; only a load/conversion failure disables the editor.
+          noffmpeg: wasEditing ? prev.noffmpeg : true,
+          annotating: false,
+          fromAnnotate: false,
           ffmpegLoaded: true,
           isFfmpegRunning: false,
           muting: false,
@@ -2687,6 +2701,7 @@ const ContentState = (props) => {
     setContentState((prev) => ({
       ...prev,
       isFfmpegRunning: false,
+      annotating: false,
       muting: false,
       cutting: false,
       trimming: false,
@@ -2864,6 +2879,38 @@ const ContentState = (props) => {
       y,
       width,
       height,
+      topLevel: false,
+      _opId: opId,
+    });
+
+    return true;
+  };
+
+  // Burns the timeline overlays (text, drawings, shapes) into the video.
+  const handleAnnotate = async (overlayDoc, sourceBlob) => {
+    if (contentState.isFfmpegRunning) return false;
+    if (
+      contentState.duration > contentState.editLimit &&
+      !contentState.override
+    ) {
+      setContentState((prev) => ({ ...prev, editErrorType: "too-long" }));
+      return false;
+    }
+
+    const opId = beginEditOp();
+
+    setContentState((prev) => ({
+      ...prev,
+      annotating: true,
+      isFfmpegRunning: true,
+      processingProgress: 0,
+      editErrorType: null,
+    }));
+
+    sendMessage({
+      type: "annotate-video",
+      blob: sourceBlob || contentState.blob,
+      overlayDoc,
       topLevel: false,
       _opId: opId,
     });
@@ -3882,6 +3929,7 @@ const ContentState = (props) => {
   contentState.download = download;
   contentState.cancelDownload = cancelDownload;
   contentState.handleCrop = handleCrop;
+  contentState.handleAnnotate = handleAnnotate;
   contentState.handleReencode = handleReencode;
   contentState.getFrame = getImage;
   contentState.downloadGIF = downloadGIF;

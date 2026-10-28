@@ -2078,5 +2078,13 @@
   "teleprompterRegionStartOnPage": {
     "message": "Region recording must be started from the page",
     "description": "Tooltip on the disabled Start button in the floating teleprompter window when recording a region, which can only be started from the page"
+  },
+  "annotateButtonTitle": {
+    "message": "Text & drawing",
+    "description": "Editor panel button that opens the timeline overlay editor"
+  },
+  "annotateButtonDescription": {
+    "message": "Add text, drawings, shapes and effects",
+    "description": "Subtitle for the Text & drawing editor button"
   }
 }

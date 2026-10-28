@@ -271,6 +271,20 @@ const RightPanel = () => {
     }));
   };
 
+  const handleAnnotate = () => {
+    if (
+      contentState.duration > contentState.editLimit &&
+      !contentState.override
+    )
+      return;
+    if (!contentState.mp4ready) return;
+
+    setContentState((prevContentState) => ({
+      ...prevContentState,
+      mode: "annotate",
+    }));
+  };
+
   const handleAddAudio = async () => {
     if (
       contentState.duration > contentState.editLimit &&
@@ -814,6 +828,40 @@ const RightPanel = () => {
                       ? getNotAvailableLabel()
                       : contentState.mp4ready
                       ? chrome.i18n.getMessage("cropButtonDescription")
+                      : getPreparingLabel()}
+                  </div>
+                </div>
+                <div className={styles.buttonRight}>
+                  <ReactSVG src={URL + "editor/icons/right-arrow.svg"} />
+                </div>
+              </div>
+              <div
+                role="button"
+                className={styles.button}
+                onClick={handleAnnotate}
+                data-testid="open-annotate"
+                disabled={
+                  (contentState.duration > contentState.editLimit &&
+                    !contentState.override) ||
+                  !contentState.mp4ready ||
+                  contentState.noffmpeg
+                }
+              >
+                <div className={styles.buttonLeft}>
+                  <ReactSVG src={URL + "editor/icons/pencil.svg"} />
+                </div>
+                <div className={styles.buttonMiddle}>
+                  <div className={styles.buttonTitle}>
+                    {chrome.i18n.getMessage("annotateButtonTitle")}
+                  </div>
+                  <div className={styles.buttonDescription}>
+                    {contentState.updateChrome ||
+                    contentState.noffmpeg ||
+                    (contentState.duration > contentState.editLimit &&
+                      !contentState.override)
+                      ? getNotAvailableLabel()
+                      : contentState.mp4ready
+                      ? chrome.i18n.getMessage("annotateButtonDescription")
                       : getPreparingLabel()}
                   </div>
                 </div>
