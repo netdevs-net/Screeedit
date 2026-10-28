@@ -712,3 +712,89 @@
     object-fit: cover;
   }
 }
+
+// ---------- scenes ----------
+.titleInput {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 4px 6px;
+  font-family: $font-bold;
+  font-size: 15px;
+  &:hover,
+  &:focus {
+    border-color: $color-border;
+  }
+}
+.navIcon {
+  font-size: 18px;
+  line-height: 1;
+}
+.scenesCanvas {
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  background: #000;
+}
+.sceneLane {
+  position: relative;
+  height: 54px;
+  margin-top: 6px;
+}
+.sceneCard {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 8px;
+  background: #3080f8;
+  color: #fff;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  font-size: 12px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+}
+.sceneTitle {
+  background: #29292f;
+}
+.sceneSelected {
+  border-color: #ffd84d;
+}
+.sceneDragging {
+  opacity: 0.5;
+}
+.sceneName {
+  font-family: $font-bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sceneLen {
+  opacity: 0.8;
+  font-size: 11px;
+}
+.sceneTrans {
+  position: absolute;
+  top: -4px;
+  height: calc(100% + 8px);
+  background: repeating-linear-gradient(45deg, rgba(255, 216, 77, 0.55) 0 4px, transparent 4px 8px);
+  border-radius: 4px;
+  z-index: 2;
+  pointer-events: none;
+}
+.sceneDrop {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  width: 3px;
+  margin-left: -1px;
+  background: #ff3b5c;
+  border-radius: 2px;
+  z-index: 3;
+}

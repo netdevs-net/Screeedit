@@ -7,6 +7,7 @@ import React, { useEffect, useRef, useContext, Suspense, lazy } from "react";
 const Editor = lazy(() => import("./layout/editor/Editor"));
 // Text & drawing overlays mode, also loaded on demand.
 const Annotate = lazy(() => import("./layout/annotate/Annotate"));
+const Scenes = lazy(() => import("./layout/scenes/Scenes"));
 import Player from "./layout/player/Player";
 import Modal from "./components/global/Modal";
 import Toast from "./components/global/Toast";
@@ -208,8 +209,14 @@ const EditorApp = () => {
           <Annotate />
         </Suspense>
       )}
+      {contentState.ready && contentState.mode === "scenes" && (
+        <Suspense fallback={null}>
+          <Scenes />
+        </Suspense>
+      )}
       {contentState.mode != "edit" &&
         contentState.mode != "annotate" &&
+        contentState.mode != "scenes" &&
         contentState.ready && <Player />}
       {!contentState.ready &&
         new URLSearchParams(window.location.search).get("reviewPreview") !==

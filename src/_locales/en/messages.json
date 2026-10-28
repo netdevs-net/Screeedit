@@ -2086,5 +2086,13 @@
   "annotateButtonDescription": {
     "message": "Add text, drawings, shapes and effects",
     "description": "Subtitle for the Text & drawing editor button"
+  },
+  "scenesButtonTitle": {
+    "message": "Scenes",
+    "description": "Editor panel button that opens the multi-scene editor"
+  },
+  "scenesButtonDescription": {
+    "message": "Combine clips and titles with transitions",
+    "description": "Subtitle for the Scenes editor button"
   }
 }

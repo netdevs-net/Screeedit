@@ -303,6 +303,11 @@ const ContentState = (props) => {
     overlayDoc: null,
     overlayBaseBlob: null,
     overlayBurnedBlob: null,
+    // Scenes: the project, its source blobs (id -> Blob) and the blob the
+    // last render produced (so re-opening the mode keeps editing the project).
+    scenesProject: null,
+    scenesSources: null,
+    scenesBurnedBlob: null,
     ffmpegLoaded: false,
     frame: null,
     pendingCropEntry: false,
@@ -2918,6 +2923,27 @@ const ContentState = (props) => {
     return true;
   };
 
+  // Renders a multi-scene project into a single video.
+  const handleRenderScenes = async (project, sources) => {
+    if (contentState.isFfmpegRunning) return false;
+    const opId = beginEditOp();
+    setContentState((prev) => ({
+      ...prev,
+      annotating: true,
+      isFfmpegRunning: true,
+      processingProgress: 0,
+      editErrorType: null,
+    }));
+    sendMessage({
+      type: "render-scenes",
+      project,
+      sources,
+      topLevel: false,
+      _opId: opId,
+    });
+    return true;
+  };
+
   const handleReencode = async (topLevel = false) => {
     if (contentState.isFfmpegRunning) return;
 
@@ -3930,6 +3956,7 @@ const ContentState = (props) => {
   contentState.cancelDownload = cancelDownload;
   contentState.handleCrop = handleCrop;
   contentState.handleAnnotate = handleAnnotate;
+  contentState.handleRenderScenes = handleRenderScenes;
   contentState.handleReencode = handleReencode;
   contentState.getFrame = getImage;
   contentState.downloadGIF = downloadGIF;

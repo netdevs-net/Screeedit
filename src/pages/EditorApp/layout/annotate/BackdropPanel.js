@@ -27,10 +27,28 @@ const readImage = (file) =>
     reader.readAsDataURL(file);
   });
 
+// The panel's card and header, left out when embedded in another panel.
+const Shell = ({ embedded, onClose, children }) =>
+  embedded ? (
+    <div className={styles.inspectorBody} data-testid="backdrop-panel">
+      {children}
+    </div>
+  ) : (
+    <div className={styles.inspector} data-testid="backdrop-panel">
+      <div className={styles.inspectorHeader}>
+        <div className={styles.inspectorTitle}>Backdrop</div>
+        <button className={styles.iconBtn} onClick={onClose} title="Close">
+          <ToolIcon name="close" size={16} />
+        </button>
+      </div>
+      {children}
+    </div>
+  );
+
 const gradientCss = (g) => `linear-gradient(135deg, ${g.stops.join(", ")})`;
 
 // Side panel for backdrops: output shape, background, device mockup.
-const BackdropPanel = ({ editor, onClose }) => {
+const BackdropPanel = ({ editor, onClose, hideAspect = false, embedded = false }) => {
   const { doc, actions } = editor;
   const frame = doc?.frame;
   const fileRef = useRef(null);
@@ -40,13 +58,7 @@ const BackdropPanel = ({ editor, onClose }) => {
 
   if (!hasFrame(frame)) {
     return (
-      <div className={styles.inspector} data-testid="backdrop-panel">
-        <div className={styles.inspectorHeader}>
-          <div className={styles.inspectorTitle}>Backdrop</div>
-          <button className={styles.iconBtn} onClick={onClose} title="Close">
-            <ToolIcon name="close" size={16} />
-          </button>
-        </div>
+      <Shell embedded={embedded} onClose={onClose}>
         <p className={styles.hint}>
           Put your recording on a background, change its shape for social media, or show it inside a browser, laptop or
           phone.
@@ -58,7 +70,7 @@ const BackdropPanel = ({ editor, onClose }) => {
         >
           Add backdrop
         </button>
-      </div>
+      </Shell>
     );
   }
 
@@ -66,27 +78,25 @@ const BackdropPanel = ({ editor, onClose }) => {
   const hasChromeTheme = ["browser", "window", "macbook"].includes(frame.device);
 
   return (
-    <div className={styles.inspector} data-testid="backdrop-panel">
-      <div className={styles.inspectorHeader}>
-        <div className={styles.inspectorTitle}>Backdrop</div>
-        <button className={styles.iconBtn} onClick={onClose} title="Close">
-          <ToolIcon name="close" size={16} />
-        </button>
-      </div>
+    <Shell embedded={embedded} onClose={onClose}>
       <div className={styles.inspectorBody}>
-        <div className={styles.sectionTitle}>Shape</div>
-        <div className={styles.animGrid}>
-          {ASPECTS.map((a) => (
-            <button
-              key={a.id}
-              className={`${styles.animBtn} ${frame.aspect === a.id ? styles.animActive : ""}`}
-              onClick={() => set({ aspect: a.id })}
-              data-testid={`aspect-${a.id}`}
-            >
-              {a.label}
-            </button>
-          ))}
-        </div>
+        {!hideAspect && (
+          <>
+            <div className={styles.sectionTitle}>Shape</div>
+            <div className={styles.animGrid}>
+              {ASPECTS.map((a) => (
+                <button
+                  key={a.id}
+                  className={`${styles.animBtn} ${frame.aspect === a.id ? styles.animActive : ""}`}
+                  onClick={() => set({ aspect: a.id })}
+                  data-testid={`aspect-${a.id}`}
+                >
+                  {a.label}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
 
         <div className={styles.sectionTitle}>Background</div>
         <Segmented
@@ -228,7 +238,7 @@ const BackdropPanel = ({ editor, onClose }) => {
           Remove backdrop
         </button>
       </div>
-    </div>
+    </Shell>
   );
 };
 

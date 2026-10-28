@@ -30,6 +30,7 @@ const annotateVideo = lazyMp4Util(() =>
   import("../Editor/utils/annotateVideo"),
 );
 const cutVideo = lazyMp4Util(() => import("../Editor/utils/cutVideo"));
+const renderScenes = lazyMp4Util(() => import("../Editor/utils/renderScenes"));
 const muteVideo = lazyMp4Util(() => import("../Editor/utils/muteVideo"));
 const reencodeVideo = lazyMp4Util(() =>
   import("../Editor/utils/reencodeVideo"),
@@ -51,6 +52,7 @@ const toBase64 = (blob) =>
 const VIEWER_REJECTED_OPS = new Set([
   "add-audio-to-video",
   "annotate-video",
+  "render-scenes",
   "base64-to-blob",
   "crop-video",
   "cut-video",
@@ -234,6 +236,26 @@ export async function runEditorOp(message, reply, { viewer = false } = {}) {
         const blob = await annotateVideo(
           message.blob,
           message.overlayDoc,
+          (progress) =>
+            reply({
+              type: "ffmpeg-progress",
+              progress: Math.round(progress * 100),
+            }),
+        );
+        const base64 = await toBase64(blob);
+        reply({
+          type: "updated-blob",
+          base64,
+          topLevel: true,
+          _opId: message._opId,
+        });
+        break;
+      }
+
+      case "render-scenes": {
+        const blob = await renderScenes(
+          message.project,
+          message.sources,
           (progress) =>
             reply({
               type: "ffmpeg-progress",

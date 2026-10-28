@@ -271,6 +271,16 @@ const RightPanel = () => {
     }));
   };
 
+  const handleScenes = () => {
+    if (
+      contentState.duration > contentState.editLimit &&
+      !contentState.override
+    )
+      return;
+    if (!contentState.mp4ready) return;
+    setContentState((prev) => ({ ...prev, mode: "scenes" }));
+  };
+
   const handleAnnotate = () => {
     if (
       contentState.duration > contentState.editLimit &&
@@ -862,6 +872,40 @@ const RightPanel = () => {
                       ? getNotAvailableLabel()
                       : contentState.mp4ready
                       ? chrome.i18n.getMessage("annotateButtonDescription")
+                      : getPreparingLabel()}
+                  </div>
+                </div>
+                <div className={styles.buttonRight}>
+                  <ReactSVG src={URL + "editor/icons/right-arrow.svg"} />
+                </div>
+              </div>
+              <div
+                role="button"
+                className={styles.button}
+                onClick={handleScenes}
+                data-testid="open-scenes"
+                disabled={
+                  (contentState.duration > contentState.editLimit &&
+                    !contentState.override) ||
+                  !contentState.mp4ready ||
+                  contentState.noffmpeg
+                }
+              >
+                <div className={styles.buttonLeft}>
+                  <ReactSVG src={URL + "editor/icons/scenes.svg"} />
+                </div>
+                <div className={styles.buttonMiddle}>
+                  <div className={styles.buttonTitle}>
+                    {chrome.i18n.getMessage("scenesButtonTitle")}
+                  </div>
+                  <div className={styles.buttonDescription}>
+                    {contentState.updateChrome ||
+                    contentState.noffmpeg ||
+                    (contentState.duration > contentState.editLimit &&
+                      !contentState.override)
+                      ? getNotAvailableLabel()
+                      : contentState.mp4ready
+                      ? chrome.i18n.getMessage("scenesButtonDescription")
                       : getPreparingLabel()}
                   </div>
                 </div>

@@ -68,7 +68,9 @@ const CHROME = {
 };
 
 // Computes where everything goes for a W x H video. All values in output px.
-export const layoutFrame = (frame, W, H) => {
+// `contentAspect` overrides the screen's aspect ratio (for a clip whose size
+// differs from the project's).
+export const layoutFrame = (frame, W, H, contentAspect) => {
   const { OW, OH } = outputSize(frame, W, H);
   if (!hasFrame(frame)) {
     return { OW, OH, content: { x: 0, y: 0, w: OW, h: OH }, contentRadii: [0, 0, 0, 0], device: null, u: 0 };
@@ -76,7 +78,7 @@ export const layoutFrame = (frame, W, H) => {
   const u = Math.min(OW, OH) / 100;
   const c = CHROME[frame.device] || CHROME.none;
   const pad = frame.padding * Math.min(OW, OH);
-  const aspect = W / H;
+  const aspect = contentAspect || W / H;
   const over = 1 + 2 * (c.baseOver || 0);
   const chromeW = (c.l + c.r) * u;
   const chromeH = (c.t + c.b + (c.base || 0)) * u;
@@ -283,12 +285,14 @@ export const drawBackdrop = (ctx, frame, L, { source, image } = {}) => {
 };
 
 // Draws the composed video frame into the screen area, clipped to its corners.
-export const drawContent = (ctx, L, source) => {
+// `crop` ({x, y, w, h} in source pixels) draws only part of the source.
+export const drawContent = (ctx, L, source, crop) => {
   const { content, contentRadii } = L;
   ctx.save();
   ctx.beginPath();
   ctx.roundRect(content.x, content.y, content.w, content.h, contentRadii);
   ctx.clip();
-  ctx.drawImage(source, content.x, content.y, content.w, content.h);
+  if (crop) ctx.drawImage(source, crop.x, crop.y, crop.w, crop.h, content.x, content.y, content.w, content.h);
+  else ctx.drawImage(source, content.x, content.y, content.w, content.h);
   ctx.restore();
 };
