@@ -23,6 +23,7 @@ const PATHS = {
   up: "M12 19V5M5 12l7-7 7 7",
   down: "M12 5v14M5 12l7 7 7-7",
   close: "M6 6l12 12M18 6L6 18",
+  autozoom: "M10 4a6 6 0 100 12 6 6 0 000-12zM20 20l-5.5-5.5M7 10h6M10 7v6M18 3l1 2 2 1-2 1-1 2-1-2-2-1 2-1z",
   split: "M12 3v18M5 8l-3 4 3 4M19 8l3 4-3 4",
   backdrop: "M3 4h18v16H3zM7 8h10v7H7zM10 18h4",
   captions: "M3 6h18v12H3zM7 11h4M13 11h4M7 14.5h7M16 14.5h1",

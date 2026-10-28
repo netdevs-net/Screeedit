@@ -84,6 +84,12 @@ export function startClickTracking(
         timestamp: Date.now(),
         region: isRegion,
         isTab: cachedRecordingType === "region",
+        // For local auto-zoom: what the coordinates are relative to.
+        recordingType: cachedRecordingType,
+        viewportWidth: isRegion ? regionWidth : window.innerWidth,
+        viewportHeight: isRegion ? regionHeight : window.innerHeight,
+        screenX: e.screenX,
+        screenY: e.screenY,
       },
     });
   };

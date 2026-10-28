@@ -20,6 +20,7 @@ import {
 } from "../../annotate/overlayEngine";
 import { findShape, linePath } from "../../annotate/shapes";
 import { drawCaptions } from "../../annotate/captions";
+import { planAutoZoom } from "../../annotate/autoZoom";
 import { hasFrame, layoutFrame, loadFrameImage, drawBackdrop } from "../../annotate/frame";
 
 const MAX_HISTORY = 60;
@@ -644,6 +645,58 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
     return addItem(kind, obj, { name: names[kind] });
   };
 
+  // Adds one zoom per group of recorded clicks, as ordinary (editable) zoom
+  // items. Replaces zooms a previous auto-zoom added. Returns the count.
+  const addAutoZoom = (clicks, opts) => {
+    const d = docRef.current;
+    const fc = fabricRef.current;
+    if (!d || !fc) return 0;
+    const regions = planAutoZoom(clicks, durationRef.current || 0, opts);
+    pushHistory();
+    const old = d.items.filter((i) => i.auto === "clicks");
+    for (const it of old) {
+      const o = objsRef.current.get(it.id);
+      if (o) fc.remove(o);
+      objsRef.current.delete(it.id);
+      basesRef.current.delete(it.id);
+    }
+    const added = regions.map((r, n) => {
+      const w = r.w * d.width;
+      const h = r.h * d.height;
+      const obj = new Path("M 0 0 H 100 V 100 H 0 Z", {
+        fill: "rgba(46,204,113,0.10)",
+        stroke: "#3080F8",
+        strokeWidth: 2,
+        strokeDashArray: [8, 6],
+        strokeUniform: true,
+        scaleX: w / 100,
+        scaleY: h / 100,
+        left: r.x * d.width,
+        top: r.y * d.height,
+        objectCaching: false,
+      });
+      centerOrigin(obj);
+      prepObject(obj, "zoom");
+      const item = createItem("zoom", obj, {
+        start: r.start,
+        end: r.end,
+        name: `Click zoom ${n + 1}`,
+        auto: "clicks",
+      });
+      objsRef.current.set(item.id, obj);
+      basesRef.current.set(item.id, baseOf(item.obj));
+      suppressRef.current = true;
+      fc.add(obj);
+      suppressRef.current = false;
+      return item;
+    });
+    setDoc({ ...d, items: [...d.items.filter((i) => i.auto !== "clicks"), ...added] });
+    fc.discardActiveObject();
+    setSelectedId(null);
+    renderNow();
+    return added.length;
+  };
+
   const getSelected = () => docRef.current?.items.find((i) => i.id === selectedId) || null;
   const getSelectedObject = () => (selectedId ? objsRef.current.get(selectedId) : null);
 
@@ -875,6 +928,7 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
       exportDoc,
       setCaptions,
       setFrame,
+      addAutoZoom,
     },
   };
 }

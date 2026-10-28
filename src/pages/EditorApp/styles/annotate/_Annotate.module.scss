@@ -798,3 +798,17 @@
   border-radius: 2px;
   z-index: 3;
 }
+
+.notice {
+  margin: 8px 12px 0;
+  background: #eaf2ff;
+  color: #1d4ed8;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.tool:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

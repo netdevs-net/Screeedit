@@ -346,6 +346,26 @@ const effectRect = (obj) => {
   return { x: r.left, y: r.top, w: r.width, h: r.height };
 };
 
+// The fully zoomed-in crop for a region, at the output aspect ratio and kept
+// inside the frame.
+const zoomCrop = (r, W, H) => {
+  const aspect = W / H;
+  let zw = Math.max(16, r.w);
+  let zh = Math.max(16, r.h);
+  if (zw / zh > aspect) zh = zw / aspect;
+  else zw = zh * aspect;
+  zw = Math.min(zw, W);
+  zh = Math.min(zh, H);
+  const cx = r.x + r.w / 2;
+  const cy = r.y + r.h / 2;
+  return {
+    x: Math.min(Math.max(0, cx - zw / 2), Math.max(0, W - zw)),
+    y: Math.min(Math.max(0, cy - zh / 2), Math.max(0, H - zh)),
+    w: zw,
+    h: zh,
+  };
+};
+
 // Draws the video frame from `source` into ctx (W x H) with zoom, blur and
 // focus effects applied. Overlay objects are drawn on top separately.
 export const drawFrameWithEffects = (ctx, source, doc, objs, t, W, H) => {
@@ -360,28 +380,30 @@ export const drawFrameWithEffects = (ctx, source, doc, objs, t, W, H) => {
   }
 
   // Zoom: interpolate the source crop from the full frame to the region.
+  // When two zooms overlap in time, pan from the first region to the second
+  // instead of zooming out and back in.
   let crop = { x: 0, y: 0, w: W, h: H };
-  const zoom = active.find((a) => a.item.kind === "zoom");
-  if (zoom) {
-    const r = effectRect(zoom.obj);
-    // Keep the output aspect ratio so the zoom doesn't stretch.
-    const aspect = W / H;
-    let zw = Math.max(16, r.w);
-    let zh = Math.max(16, r.h);
-    if (zw / zh > aspect) zh = zw / aspect;
-    else zw = zh * aspect;
-    const cx = r.x + r.w / 2;
-    const cy = r.y + r.h / 2;
-    let zx = Math.min(Math.max(0, cx - zw / 2), Math.max(0, W - zw));
-    let zy = Math.min(Math.max(0, cy - zh / 2), Math.max(0, H - zh));
-    zw = Math.min(zw, W);
-    zh = Math.min(zh, H);
-    const p = zoom.st.phase;
+  const zooms = active.filter((a) => a.item.kind === "zoom").sort((a, b) => a.item.start - b.item.start);
+  if (zooms.length >= 2) {
+    const [A, B] = zooms;
+    const span = Math.max(0.01, A.item.end - B.item.start);
+    const p = EASE.easeInOut(clamp01((t - B.item.start) / span));
+    const ra = zoomCrop(effectRect(A.obj), W, H);
+    const rb = zoomCrop(effectRect(B.obj), W, H);
     crop = {
-      x: zx * p,
-      y: zy * p,
-      w: W + (zw - W) * p,
-      h: H + (zh - H) * p,
+      x: ra.x + (rb.x - ra.x) * p,
+      y: ra.y + (rb.y - ra.y) * p,
+      w: ra.w + (rb.w - ra.w) * p,
+      h: ra.h + (rb.h - ra.h) * p,
+    };
+  } else if (zooms.length === 1) {
+    const r = zoomCrop(effectRect(zooms[0].obj), W, H);
+    const p = zooms[0].st.phase;
+    crop = {
+      x: r.x * p,
+      y: r.y * p,
+      w: W + (r.w - W) * p,
+      h: H + (r.h - H) * p,
     };
   }
   const sw = source.videoWidth || source.width;

@@ -38,10 +38,34 @@ const Annotate = () => {
   });
   const { refs, actions, doc } = editor;
   const [saveError, setSaveError] = useState(null);
+  const [clicks, setClicks] = useState([]);
+  const [notice, setNotice] = useState(null);
   const [panel, setPanel] = useState(null); // null | "captions" | "backdrop"
   const togglePanel = (p) => setPanel((cur) => (cur === p ? null : p));
 
   const busy = contentState.annotating || contentState.isFfmpegRunning;
+
+  // Clicks logged while this recording was made (tab, region and full-screen
+  // recordings), for auto-zoom.
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("recordingId");
+    chrome.storage.local.get(["clickEvents"]).then(({ clickEvents = [] }) => {
+      setClicks(
+        clickEvents
+          .filter((c) => c.rid && c.rid === id && typeof c.nx === "number")
+          .map((c) => ({ t: c.t, x: c.nx, y: c.ny })),
+      );
+    });
+  }, []);
+
+  const handleAutoZoom = () => {
+    const n = actions.addAutoZoom(clicks);
+    setNotice(
+      n
+        ? `Added ${n} zoom${n === 1 ? "" : "s"} from your clicks. Drag the bars or boxes to adjust them.`
+        : "None of the recorded clicks fall inside this video.",
+    );
+  };
   const hasItems = (doc?.items?.length || 0) > 0 || hasCaptions(doc?.captions) || hasFrame(doc?.frame);
   const canSave = !busy && (hasItems || Boolean(initialDoc));
 
@@ -153,8 +177,15 @@ const Annotate = () => {
         editor={editor}
         panel={panel}
         onPanel={togglePanel}
+        clickCount={clicks.length}
+        onAutoZoom={handleAutoZoom}
       />
       {saveError && <div className={styles.error}>{saveError}</div>}
+      {notice && (
+        <div className={styles.notice} data-testid="annotate-notice" onClick={() => setNotice(null)}>
+          {notice}
+        </div>
+      )}
       <div className={styles.main}>
         {panel === "captions" ? (
           <CaptionsPanel editor={editor} sourceBlob={sourceBlob} onClose={() => setPanel(null)} />

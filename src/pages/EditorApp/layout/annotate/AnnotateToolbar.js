@@ -38,7 +38,7 @@ const MenuButton = ({ icon, label, active, children, testId }) => {
   );
 };
 
-const AnnotateToolbar = ({ editor, panel, onPanel }) => {
+const AnnotateToolbar = ({ editor, panel, onPanel, clickCount = 0, onAutoZoom }) => {
   const { tool, drawStyle, actions, history, selectedId } = editor;
   const fileRef = useRef(null);
 
@@ -151,6 +151,20 @@ const AnnotateToolbar = ({ editor, panel, onPanel }) => {
         <button className={styles.tool} onClick={() => actions.addEffect("zoom")} data-testid="tool-zoom" title="Zoom into a region">
           <ToolIcon name="zoom" />
           <span>Zoom</span>
+        </button>
+        <button
+          className={styles.tool}
+          onClick={onAutoZoom}
+          disabled={!clickCount}
+          data-testid="tool-autozoom"
+          title={
+            clickCount
+              ? `Zoom in where you clicked (${clickCount} click${clickCount === 1 ? "" : "s"} recorded)`
+              : "No clicks were recorded for this video. Clicks are tracked in tab, region and full-screen recordings."
+          }
+        >
+          <ToolIcon name="autozoom" />
+          <span>Auto zoom</span>
         </button>
       </div>
       <div className={styles.divider} />
