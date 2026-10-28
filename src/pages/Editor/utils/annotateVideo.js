@@ -16,6 +16,13 @@ import {
   drawFrameWithEffects,
 } from "../../EditorApp/annotate/overlayEngine";
 import { drawCaptions } from "../../EditorApp/annotate/captions";
+import {
+  hasFrame,
+  layoutFrame,
+  loadFrameImage,
+  drawBackdrop,
+  drawContent,
+} from "../../EditorApp/annotate/frame";
 
 // Burns timeline overlays (text, drawings, shapes, images, blur/focus/zoom
 // effects) into every frame of the video. Audio is copied through untouched.
@@ -81,6 +88,14 @@ export default async function annotateVideo(
   const outCanvas = new OffscreenCanvas(W, H);
   const outCtx = outCanvas.getContext("2d");
 
+  // Backdrop / device mockup: the composed video is placed inside a larger
+  // (or differently shaped) output frame.
+  const frame = hasFrame(overlayDoc.frame) ? overlayDoc.frame : null;
+  const layout = frame ? layoutFrame(frame, W, H) : null;
+  const frameImage = frame ? await loadFrameImage(frame) : null;
+  const finalCanvas = layout ? new OffscreenCanvas(layout.OW, layout.OH) : outCanvas;
+  const finalCtx = finalCanvas.getContext("2d");
+
   const targetFormat = inputFormat.name.toLowerCase().includes("mp4")
     ? "mp4"
     : "webm";
@@ -99,8 +114,8 @@ export default async function annotateVideo(
     video: {
       forceTranscode: true,
       bitrate: 5_000_000,
-      processedWidth: W,
-      processedHeight: H,
+      processedWidth: layout ? layout.OW : W,
+      processedHeight: layout ? layout.OH : H,
       process: (sample) => {
         const t = sample.timestamp;
         sourceCtx.clearRect(0, 0, docW, docH);
@@ -118,7 +133,10 @@ export default async function annotateVideo(
         outCtx.clearRect(0, 0, W, H);
         outCtx.drawImage(frameCanvas, 0, 0, W, H);
         outCtx.drawImage(overlayEl, 0, 0, W, H);
-        return outCanvas;
+        if (!layout) return outCanvas;
+        drawBackdrop(finalCtx, frame, layout, { source: outCanvas, image: frameImage });
+        drawContent(finalCtx, layout, outCanvas);
+        return finalCanvas;
       },
     },
   });

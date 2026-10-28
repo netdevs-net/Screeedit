@@ -6,6 +6,8 @@ import AnnotateToolbar from "./AnnotateToolbar";
 import Inspector from "./Inspector";
 import OverlayTimeline from "./OverlayTimeline";
 import CaptionsPanel from "./CaptionsPanel";
+import BackdropPanel from "./BackdropPanel";
+import { hasFrame } from "../../annotate/frame";
 import { hasCaptions } from "../../annotate/captions";
 
 const URL = "/assets/";
@@ -36,10 +38,11 @@ const Annotate = () => {
   });
   const { refs, actions, doc } = editor;
   const [saveError, setSaveError] = useState(null);
-  const [captionsOpen, setCaptionsOpen] = useState(false);
+  const [panel, setPanel] = useState(null); // null | "captions" | "backdrop"
+  const togglePanel = (p) => setPanel((cur) => (cur === p ? null : p));
 
   const busy = contentState.annotating || contentState.isFfmpegRunning;
-  const hasItems = (doc?.items?.length || 0) > 0 || hasCaptions(doc?.captions);
+  const hasItems = (doc?.items?.length || 0) > 0 || hasCaptions(doc?.captions) || hasFrame(doc?.frame);
   const canSave = !busy && (hasItems || Boolean(initialDoc));
 
   useEffect(() => {
@@ -91,7 +94,7 @@ const Annotate = () => {
     const overlayDoc = actions.exportDoc();
 
     // Removing every overlay from a re-edit just restores the original.
-    if (!overlayDoc.items.length && !hasCaptions(overlayDoc.captions)) {
+    if (!overlayDoc.items.length && !hasCaptions(overlayDoc.captions) && !hasFrame(overlayDoc.frame)) {
       setContentState((prev) => ({
         ...prev,
         blob: sourceBlob,
@@ -148,28 +151,33 @@ const Annotate = () => {
       </div>
       <AnnotateToolbar
         editor={editor}
-        captionsOpen={captionsOpen}
-        onCaptions={() => setCaptionsOpen((o) => !o)}
+        panel={panel}
+        onPanel={togglePanel}
       />
       {saveError && <div className={styles.error}>{saveError}</div>}
       <div className={styles.main}>
-        {captionsOpen ? (
-          <CaptionsPanel editor={editor} sourceBlob={sourceBlob} onClose={() => setCaptionsOpen(false)} />
+        {panel === "captions" ? (
+          <CaptionsPanel editor={editor} sourceBlob={sourceBlob} onClose={() => setPanel(null)} />
+        ) : panel === "backdrop" ? (
+          <BackdropPanel editor={editor} onClose={() => setPanel(null)} />
         ) : (
           <Inspector editor={editor} />
         )}
         <div className={styles.stage} ref={refs.stageRef}>
-          <div className={styles.stageInner}>
-            <canvas ref={refs.frameCanvasRef} className={styles.frameCanvas} />
-            <div className={styles.fabricHost}>
-              <canvas ref={refs.fabricElRef} />
+          <div className={styles.compose} ref={refs.composeRef}>
+            <canvas ref={refs.backdropCanvasRef} className={styles.backdropCanvas} data-testid="backdrop-canvas" />
+            <div className={styles.stageInner} ref={refs.contentRef}>
+              <canvas ref={refs.frameCanvasRef} className={styles.frameCanvas} />
+              <div className={styles.fabricHost}>
+                <canvas ref={refs.fabricElRef} />
+              </div>
             </div>
           </div>
           <video ref={refs.videoRef} className={styles.hiddenVideo} playsInline preload="auto" />
           {!editor.size && <div className={styles.loading}>Loading video…</div>}
         </div>
       </div>
-      <OverlayTimeline editor={editor} onOpenCaptions={() => setCaptionsOpen(true)} />
+      <OverlayTimeline editor={editor} onOpenCaptions={() => setPanel("captions")} />
     </div>
   );
 };

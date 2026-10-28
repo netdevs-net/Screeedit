@@ -38,7 +38,7 @@ const MenuButton = ({ icon, label, active, children, testId }) => {
   );
 };
 
-const AnnotateToolbar = ({ editor, captionsOpen, onCaptions }) => {
+const AnnotateToolbar = ({ editor, panel, onPanel }) => {
   const { tool, drawStyle, actions, history, selectedId } = editor;
   const fileRef = useRef(null);
 
@@ -156,13 +156,22 @@ const AnnotateToolbar = ({ editor, captionsOpen, onCaptions }) => {
       <div className={styles.divider} />
       <div className={styles.toolGroup}>
         <button
-          className={`${styles.tool} ${captionsOpen ? styles.toolActive : ""}`}
-          onClick={onCaptions}
+          className={`${styles.tool} ${panel === "captions" ? styles.toolActive : ""}`}
+          onClick={() => onPanel("captions")}
           data-testid="tool-captions"
           title="Word-by-word captions from speech"
         >
           <ToolIcon name="captions" />
           <span>Captions</span>
+        </button>
+        <button
+          className={`${styles.tool} ${panel === "backdrop" ? styles.toolActive : ""}`}
+          onClick={() => onPanel("backdrop")}
+          data-testid="tool-backdrop"
+          title="Background, shape and device mockup"
+        >
+          <ToolIcon name="backdrop" />
+          <span>Backdrop</span>
         </button>
       </div>
       <div className={styles.divider} />

@@ -23,6 +23,7 @@ const PATHS = {
   up: "M12 19V5M5 12l7-7 7 7",
   down: "M12 5v14M5 12l7 7 7-7",
   close: "M6 6l12 12M18 6L6 18",
+  backdrop: "M3 4h18v16H3zM7 8h10v7H7zM10 18h4",
   captions: "M3 6h18v12H3zM7 11h4M13 11h4M7 14.5h7M16 14.5h1",
 };
 

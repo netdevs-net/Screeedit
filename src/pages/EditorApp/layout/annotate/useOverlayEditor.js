@@ -20,6 +20,7 @@ import {
 } from "../../annotate/overlayEngine";
 import { findShape, linePath } from "../../annotate/shapes";
 import { drawCaptions } from "../../annotate/captions";
+import { hasFrame, layoutFrame, loadFrameImage, drawBackdrop } from "../../annotate/frame";
 
 const MAX_HISTORY = 60;
 const DEFAULT_ITEM_SECONDS = 3;
@@ -117,6 +118,11 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
   const frameCanvasRef = useRef(null);
   const fabricElRef = useRef(null);
   const stageRef = useRef(null);
+  const composeRef = useRef(null);
+  const contentRef = useRef(null);
+  const backdropCanvasRef = useRef(null);
+  const frameImageRef = useRef(null);
+  const fitRef = useRef(() => {});
   const fabricRef = useRef(null);
   const objsRef = useRef(new Map());
   const basesRef = useRef(new Map());
@@ -173,6 +179,15 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
     const ctx = canvas.getContext("2d");
     drawFrameWithEffects(ctx, video, d, objsRef.current, timeRef.current, d.width, d.height);
     drawCaptions(ctx, d.captions, timeRef.current, d.width, d.height);
+    const bd = backdropCanvasRef.current;
+    if (bd && hasFrame(d.frame)) {
+      const L = layoutFrame(d.frame, d.width, d.height);
+      if (bd.width !== L.OW || bd.height !== L.OH) {
+        bd.width = L.OW;
+        bd.height = L.OH;
+      }
+      drawBackdrop(bd.getContext("2d"), d.frame, L, { source: canvas, image: frameImageRef.current });
+    }
   }, []);
 
   const applyTime = useCallback(() => {
@@ -239,6 +254,8 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
       }
     }
     suppressRef.current = false;
+    frameImageRef.current = await loadFrameImage(nextDoc.frame);
+    fitRef.current();
     renderNow();
   };
 
@@ -413,17 +430,36 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
     };
   }, [size]);
 
-  // Fit both canvases into the stage, preserving the video aspect ratio.
+  // Fit the composition (backdrop + video) into the stage. The video layer
+  // sits at its place inside the backdrop; both canvases keep full
+  // resolution and are scaled with CSS.
   useEffect(() => {
     if (!size) return;
     const stage = stageRef.current;
     const fit = () => {
       const fc = fabricRef.current;
-      if (!stage || !fc) return;
+      const d = docRef.current;
+      if (!stage || !fc || !d) return;
+      const framed = hasFrame(d.frame);
+      const L = layoutFrame(d.frame, size.w, size.h);
       const box = stage.getBoundingClientRect();
-      const scale = Math.min(box.width / size.w, box.height / size.h);
-      const cssW = Math.floor(size.w * scale);
-      const cssH = Math.floor(size.h * scale);
+      const scale = Math.min(box.width / L.OW, box.height / L.OH);
+      const compose = composeRef.current;
+      compose.style.width = `${Math.floor(L.OW * scale)}px`;
+      compose.style.height = `${Math.floor(L.OH * scale)}px`;
+      backdropCanvasRef.current.style.display = framed ? "block" : "none";
+      const c = L.content;
+      const cssW = Math.floor(c.w * scale);
+      const cssH = Math.floor(c.h * scale);
+      const content = contentRef.current;
+      Object.assign(content.style, {
+        left: `${Math.round(c.x * scale)}px`,
+        top: `${Math.round(c.y * scale)}px`,
+        width: `${cssW}px`,
+        height: `${cssH}px`,
+        borderRadius: framed ? L.contentRadii.map((r) => `${r * scale}px`).join(" ") : "",
+        boxShadow: framed ? "none" : "",
+      });
       fc.setDimensions({ width: `${cssW}px`, height: `${cssH}px` }, { cssOnly: true });
       const frame = frameCanvasRef.current;
       frame.style.width = `${cssW}px`;
@@ -431,6 +467,7 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
       fc.calcOffset();
       forceRender((n) => n + 1);
     };
+    fitRef.current = fit;
     fit();
     const ro = new ResizeObserver(fit);
     ro.observe(stage);
@@ -781,13 +818,30 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
     renderNow();
   };
 
+  // Backdrop / device frame on the doc. Pass null to remove it.
+  const setFrame = (frame, { history = true } = {}) => {
+    const d = docRef.current;
+    if (!d) return;
+    if (history) pushHistory();
+    const next = { ...d };
+    if (frame) next.frame = frame;
+    else delete next.frame;
+    setDoc(next);
+    loadFrameImage(frame).then((img) => {
+      frameImageRef.current = img;
+      renderNow();
+    });
+    fitRef.current();
+    renderNow();
+  };
+
   const isEditingText = () => Boolean(fabricRef.current?.getActiveObject()?.isEditing);
 
   // Final doc for export, with each object's current resting pose.
   const exportDoc = () => cloneDoc(docRef.current);
 
   return {
-    refs: { videoRef, frameCanvasRef, fabricElRef, stageRef },
+    refs: { videoRef, frameCanvasRef, fabricElRef, stageRef, composeRef, contentRef, backdropCanvasRef },
     doc,
     size,
     duration: videoDuration,
@@ -820,6 +874,7 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
       isEditingText,
       exportDoc,
       setCaptions,
+      setFrame,
     },
   };
 }
