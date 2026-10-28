@@ -17,6 +17,10 @@ import AudioUI from "../editor/AudioUI";
 
 import { ContentStateContext } from "../../context/ContentState";
 
+// Chrome can keep serving an unpacked extension's old _locales after a
+// reload, so strings added since come back empty. Fall back to English.
+const msg = (key, fallback) => chrome.i18n.getMessage(key) || fallback;
+
 const RightPanel = () => {
   const [contentState, setContentState] = useContext(ContentStateContext);
   const contentStateRef = useRef(contentState);
@@ -862,7 +866,7 @@ const RightPanel = () => {
                 </div>
                 <div className={styles.buttonMiddle}>
                   <div className={styles.buttonTitle}>
-                    {chrome.i18n.getMessage("annotateButtonTitle")}
+                    {msg("annotateButtonTitle", "Text & drawing")}
                   </div>
                   <div className={styles.buttonDescription}>
                     {contentState.updateChrome ||
@@ -871,7 +875,7 @@ const RightPanel = () => {
                       !contentState.override)
                       ? getNotAvailableLabel()
                       : contentState.mp4ready
-                      ? chrome.i18n.getMessage("annotateButtonDescription")
+                      ? msg("annotateButtonDescription", "Add text, drawings, captions and backdrops")
                       : getPreparingLabel()}
                   </div>
                 </div>
@@ -896,7 +900,7 @@ const RightPanel = () => {
                 </div>
                 <div className={styles.buttonMiddle}>
                   <div className={styles.buttonTitle}>
-                    {chrome.i18n.getMessage("scenesButtonTitle")}
+                    {msg("scenesButtonTitle", "Scenes")}
                   </div>
                   <div className={styles.buttonDescription}>
                     {contentState.updateChrome ||
@@ -905,7 +909,7 @@ const RightPanel = () => {
                       !contentState.override)
                       ? getNotAvailableLabel()
                       : contentState.mp4ready
-                      ? chrome.i18n.getMessage("scenesButtonDescription")
+                      ? msg("scenesButtonDescription", "Combine clips and titles with transitions")
                       : getPreparingLabel()}
                   </div>
                 </div>

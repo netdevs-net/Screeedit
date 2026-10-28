@@ -2084,7 +2084,7 @@
     "description": "Editor panel button that opens the timeline overlay editor"
   },
   "annotateButtonDescription": {
-    "message": "Add text, drawings, shapes and effects",
+    "message": "Add text, drawings, captions and backdrops",
     "description": "Subtitle for the Text & drawing editor button"
   },
   "scenesButtonTitle": {

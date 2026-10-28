@@ -3165,6 +3165,19 @@ const ContentState = (props) => {
       };
 
       chrome.downloads.onChanged.addListener(handler);
+      // A small blob download with no Save-As prompt can finish before the
+      // listener above is attached, so its "complete" event is never seen.
+      // Check the current state once and replay it through the handler.
+      chrome.downloads.search({ id: downloadId }, (items) => {
+        const state = items?.[0]?.state;
+        if (state === "complete" || state === "interrupted") {
+          handler({
+            id: downloadId,
+            state: { current: state },
+            error: items[0].error ? { current: items[0].error } : undefined,
+          });
+        }
+      });
     });
   };
 
@@ -3496,8 +3509,25 @@ const ContentState = (props) => {
         inputBytes,
         reason: String(err?.message || err).slice(0, 120),
       });
-      return { blob: null, path: null, audioCarried: null };
     }
+    // Offscreen document unavailable or failed: re-encode here instead, so
+    // "Download as .mp4" still gives an MP4 rather than the WebM source.
+    try {
+      const { default: convertWebmToMp4 } = await import(
+        "../../Editor/utils/convertWebmToMp4"
+      );
+      const out = await convertWebmToMp4(blob, sharedFinalizeProgress);
+      if (out?.size) {
+        return {
+          blob: new Blob([out], { type: "video/mp4" }),
+          path: "webm-transcode-inline",
+          audioCarried: true,
+        };
+      }
+    } catch (err) {
+      console.warn("[Screenity] in-editor webm->mp4 failed", err);
+    }
+    return { blob: null, path: null, audioCarried: null };
   };
 
   // Cache + dedupe the standard-MP4 finalize, keyed on the exact source blob so
@@ -3825,22 +3855,24 @@ const ContentState = (props) => {
         );
       }
       if (downloadCancelledRef.current) return;
-      const blobToSave = webmBlob || sourceBlob;
-      const ext = blobToSave.type === "video/webm" ? ".webm" : ".mp4";
-      try {
-        const url = URL.createObjectURL(blobToSave);
-        await requestDownload(url, ext);
-        URL.revokeObjectURL(url);
-      } catch (err) {
-        console.error("[Screenity] webm download failed", err);
+      // Only stop here with a real WebM. Otherwise fall through to the
+      // in-editor converter below rather than handing back the MP4.
+      if (webmBlob?.type === "video/webm") {
+        try {
+          const url = URL.createObjectURL(webmBlob);
+          await requestDownload(url, ".webm");
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          console.error("[Screenity] webm download failed", err);
+        }
+        setContentState((prevState) => ({
+          ...prevState,
+          downloadingWEBM: false,
+          isFfmpegRunning: false,
+          saved: true,
+        }));
+        return;
       }
-      setContentState((prevState) => ({
-        ...prevState,
-        downloadingWEBM: false,
-        isFfmpegRunning: false,
-        saved: true,
-      }));
-      return;
     }
 
     sendMessage({
@@ -3888,6 +3920,15 @@ const ContentState = (props) => {
       // Stalled or failed: deliver the source as-is so the user isn't stuck.
       // It's already a finalized, playable file; use its real extension.
       const ext = sourceBlob.type === "video/webm" ? ".webm" : ".mp4";
+      if (ext !== ".webm") {
+        try {
+          showEditorToast(
+            contentStateRef.current,
+            "Couldn't convert to WebM, so the video was saved as MP4 instead.",
+            6000,
+          );
+        } catch {}
+      }
       try {
         const url = URL.createObjectURL(sourceBlob);
         await requestDownload(url, ext);
