@@ -5,6 +5,8 @@ import useOverlayEditor from "./useOverlayEditor";
 import AnnotateToolbar from "./AnnotateToolbar";
 import Inspector from "./Inspector";
 import OverlayTimeline from "./OverlayTimeline";
+import CaptionsPanel from "./CaptionsPanel";
+import { hasCaptions } from "../../annotate/captions";
 
 const URL = "/assets/";
 
@@ -34,9 +36,10 @@ const Annotate = () => {
   });
   const { refs, actions, doc } = editor;
   const [saveError, setSaveError] = useState(null);
+  const [captionsOpen, setCaptionsOpen] = useState(false);
 
   const busy = contentState.annotating || contentState.isFfmpegRunning;
-  const hasItems = (doc?.items?.length || 0) > 0;
+  const hasItems = (doc?.items?.length || 0) > 0 || hasCaptions(doc?.captions);
   const canSave = !busy && (hasItems || Boolean(initialDoc));
 
   useEffect(() => {
@@ -88,7 +91,7 @@ const Annotate = () => {
     const overlayDoc = actions.exportDoc();
 
     // Removing every overlay from a re-edit just restores the original.
-    if (!overlayDoc.items.length) {
+    if (!overlayDoc.items.length && !hasCaptions(overlayDoc.captions)) {
       setContentState((prev) => ({
         ...prev,
         blob: sourceBlob,
@@ -143,10 +146,18 @@ const Annotate = () => {
           </button>
         </div>
       </div>
-      <AnnotateToolbar editor={editor} />
+      <AnnotateToolbar
+        editor={editor}
+        captionsOpen={captionsOpen}
+        onCaptions={() => setCaptionsOpen((o) => !o)}
+      />
       {saveError && <div className={styles.error}>{saveError}</div>}
       <div className={styles.main}>
-        <Inspector editor={editor} />
+        {captionsOpen ? (
+          <CaptionsPanel editor={editor} sourceBlob={sourceBlob} onClose={() => setCaptionsOpen(false)} />
+        ) : (
+          <Inspector editor={editor} />
+        )}
         <div className={styles.stage} ref={refs.stageRef}>
           <div className={styles.stageInner}>
             <canvas ref={refs.frameCanvasRef} className={styles.frameCanvas} />
@@ -158,7 +169,7 @@ const Annotate = () => {
           {!editor.size && <div className={styles.loading}>Loading video…</div>}
         </div>
       </div>
-      <OverlayTimeline editor={editor} />
+      <OverlayTimeline editor={editor} onOpenCaptions={() => setCaptionsOpen(true)} />
     </div>
   );
 };

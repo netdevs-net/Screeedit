@@ -19,6 +19,7 @@ import {
   newId,
 } from "../../annotate/overlayEngine";
 import { findShape, linePath } from "../../annotate/shapes";
+import { drawCaptions } from "../../annotate/captions";
 
 const MAX_HISTORY = 60;
 const DEFAULT_ITEM_SECONDS = 3;
@@ -171,6 +172,7 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
     if (!video || !canvas || !d || video.readyState < 2) return;
     const ctx = canvas.getContext("2d");
     drawFrameWithEffects(ctx, video, d, objsRef.current, timeRef.current, d.width, d.height);
+    drawCaptions(ctx, d.captions, timeRef.current, d.width, d.height);
   }, []);
 
   const applyTime = useCallback(() => {
@@ -767,6 +769,18 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
     await rebuildCanvas(next);
   };
 
+  // Captions live on the doc, not as a fabric item. Pass null to remove them.
+  const setCaptions = (captions, { history = true } = {}) => {
+    const d = docRef.current;
+    if (!d) return;
+    if (history) pushHistory();
+    const next = { ...d };
+    if (captions) next.captions = captions;
+    else delete next.captions;
+    setDoc(next);
+    renderNow();
+  };
+
   const isEditingText = () => Boolean(fabricRef.current?.getActiveObject()?.isEditing);
 
   // Final doc for export, with each object's current resting pose.
@@ -805,6 +819,7 @@ export default function useOverlayEditor({ blob, initialDoc, duration }) {
       redo,
       isEditingText,
       exportDoc,
+      setCaptions,
     },
   };
 }

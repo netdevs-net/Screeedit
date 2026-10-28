@@ -38,7 +38,7 @@ const MenuButton = ({ icon, label, active, children, testId }) => {
   );
 };
 
-const AnnotateToolbar = ({ editor }) => {
+const AnnotateToolbar = ({ editor, captionsOpen, onCaptions }) => {
   const { tool, drawStyle, actions, history, selectedId } = editor;
   const fileRef = useRef(null);
 
@@ -151,6 +151,18 @@ const AnnotateToolbar = ({ editor }) => {
         <button className={styles.tool} onClick={() => actions.addEffect("zoom")} data-testid="tool-zoom" title="Zoom into a region">
           <ToolIcon name="zoom" />
           <span>Zoom</span>
+        </button>
+      </div>
+      <div className={styles.divider} />
+      <div className={styles.toolGroup}>
+        <button
+          className={`${styles.tool} ${captionsOpen ? styles.toolActive : ""}`}
+          onClick={onCaptions}
+          data-testid="tool-captions"
+          title="Word-by-word captions from speech"
+        >
+          <ToolIcon name="captions" />
+          <span>Captions</span>
         </button>
       </div>
       <div className={styles.divider} />

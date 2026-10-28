@@ -15,6 +15,7 @@ import {
   applyTimeToObjects,
   drawFrameWithEffects,
 } from "../../EditorApp/annotate/overlayEngine";
+import { drawCaptions } from "../../EditorApp/annotate/captions";
 
 // Burns timeline overlays (text, drawings, shapes, images, blur/focus/zoom
 // effects) into every frame of the video. Audio is copied through untouched.
@@ -51,7 +52,10 @@ export default async function annotateVideo(
 
   // Text must render in its real font, so wait for every family used.
   const families = new Set(
-    overlayDoc.items.map((i) => i.obj?.fontFamily).filter(Boolean),
+    [
+      ...overlayDoc.items.map((i) => i.obj?.fontFamily),
+      overlayDoc.captions?.style?.fontFamily,
+    ].filter(Boolean),
   );
   await Promise.all(
     [...families].map((f) =>
@@ -103,6 +107,7 @@ export default async function annotateVideo(
         sample.draw(sourceCtx, 0, 0, docW, docH);
         frameCtx.clearRect(0, 0, docW, docH);
         drawFrameWithEffects(frameCtx, sourceCanvas, overlayDoc, objs, t, docW, docH);
+        drawCaptions(frameCtx, overlayDoc.captions, t, docW, docH);
 
         applyTimeToObjects(overlayDoc, objs, bases, t, docW, docH, {
           animate: true,

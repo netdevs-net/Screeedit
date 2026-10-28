@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.27.1",
+    "@huggingface/transformers": "^4.3.2",
     "@mediabunny/aac-encoder": "^1.62.1",
     "@mediapipe/tasks-vision": "1.1.1",
     "@radix-ui/react-alert-dialog": "^1.0.4",

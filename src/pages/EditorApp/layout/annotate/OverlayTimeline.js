@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../../styles/annotate/_Annotate.module.scss";
 import { ToolIcon } from "./icons";
+import { buildChunks, defaultCaptionStyle, hasCaptions } from "../../annotate/captions";
 
 const KIND_COLORS = {
   text: "#2ECC71",
@@ -31,7 +32,7 @@ const fmt = (t) => {
   return `${String(m).padStart(2, "0")}:${s.toFixed(1).padStart(4, "0")}`;
 };
 
-const OverlayTimeline = ({ editor }) => {
+const OverlayTimeline = ({ editor, onOpenCaptions }) => {
   const { doc, duration, time, playing, selectedId, actions } = editor;
   const trackRef = useRef(null);
   const [width, setWidth] = useState(800);
@@ -109,6 +110,11 @@ const OverlayTimeline = ({ editor }) => {
   };
 
   const items = doc?.items || [];
+  const captions = doc?.captions;
+  const captionChunks = hasCaptions(captions)
+    ? buildChunks(captions.words, { ...defaultCaptionStyle(), ...captions.style }.maxWords)
+    : [];
+  const captionOffset = captions?.offset || 0;
 
   return (
     <div className={styles.timeline}>
@@ -125,7 +131,8 @@ const OverlayTimeline = ({ editor }) => {
           {fmt(time)} / {fmt(duration || 0)}
         </span>
         <span className={styles.muted}>
-          {items.length === 0 ? "No overlays yet" : `${items.length} overlay${items.length === 1 ? "" : "s"}`}
+          {items.length === 0 ? (captionChunks.length ? "" : "No overlays yet") : `${items.length} overlay${items.length === 1 ? "" : "s"}`}
+          {captionChunks.length > 0 && `${items.length ? " · " : ""}Captions`}
         </span>
       </div>
       <div className={styles.trackArea} ref={trackRef}>
@@ -138,6 +145,24 @@ const OverlayTimeline = ({ editor }) => {
         </div>
         <div className={styles.lanes} onPointerDown={startScrub}>
           <div className={styles.videoLane} />
+          {captionChunks.length > 0 && (
+            <div className={styles.lane} data-testid="captions-lane">
+              {captionChunks.map((c) => (
+                <div
+                  key={`${c.from}-${c.start}`}
+                  className={styles.captionBar}
+                  style={{ left: toX(c.start + captionOffset), width: Math.max(3, (c.end - c.start) * pxPerSec - 1) }}
+                  title={captions.words.slice(c.from, c.to + 1).map((w) => w.text.trim()).join(" ")}
+                  onPointerDown={(e) => {
+                    e.stopPropagation();
+                    if (playing) actions.pause();
+                    actions.seek(c.start + captionOffset + 0.01);
+                    onOpenCaptions?.();
+                  }}
+                />
+              ))}
+            </div>
+          )}
           {[...items].reverse().map((item) => {
             const left = toX(item.start);
             const w = Math.max(6, (item.end - item.start) * pxPerSec);

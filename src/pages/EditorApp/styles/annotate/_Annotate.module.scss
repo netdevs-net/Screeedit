@@ -593,3 +593,74 @@
   background: $color-red;
   pointer-events: none;
 }
+
+// ---------- captions ----------
+.textInput {
+  width: 100%;
+  height: 30px;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  padding: 0 8px;
+  font-family: $font-medium;
+  font-size: 13px;
+  min-width: 0;
+}
+.fullBtn {
+  width: 100%;
+  justify-content: center;
+}
+.inlineError {
+  background: #fdecee;
+  color: #b3261e;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit !important;
+  flex: none !important;
+  cursor: pointer;
+}
+.captionList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.captionLine {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px;
+  border-radius: 8px;
+}
+.captionLineActive {
+  background: rgba(48, 128, 248, 0.1);
+}
+.captionTime {
+  flex: 0 0 44px;
+  border: none;
+  background: none;
+  color: $color-text-secondary;
+  font-family: $font-medium;
+  font-size: 11px;
+  cursor: pointer;
+  text-align: left;
+  &:hover {
+    color: #3080f8;
+  }
+}
+.captionBar {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 4px;
+  background: #e67e22;
+  opacity: 0.85;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+}

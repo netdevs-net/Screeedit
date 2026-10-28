@@ -446,4 +446,5 @@ function toHex(color) {
   return "#000000";
 }
 
+export { Row, ColorInput, Slider, NumberInput, Segmented };
 export default Inspector;
