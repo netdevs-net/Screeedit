@@ -201,7 +201,7 @@ const BackdropPanel = ({ editor, onClose, hideAspect = false, embedded = false }
           <Row label="Address">
             <input
               className={styles.textInput}
-              defaultValue={frame.url || "screeedit.app"}
+              defaultValue={frame.url || "example.com"}
               onBlur={(e) => set({ url: e.target.value })}
               onKeyDown={(e) => e.key === "Enter" && e.currentTarget.blur()}
               data-testid="backdrop-url"

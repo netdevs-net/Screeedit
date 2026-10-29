@@ -1,6 +1,6 @@
 # Third-party notices
 
-Screenity is licensed under the [GNU General Public License v3.0](./LICENSE).
+Screeedit is a modified version of [Screenity](https://github.com/alyssaxuu/screenity) by Alyssa X, and like Screenity is licensed under the [GNU General Public License v3.0](./LICENSE).
 
 The extension bundles some third-party open source code. Each dependency keeps its own license, listed below with its full license text.
 
@@ -27,11 +27,20 @@ Copyright 2019-2024 The MediaPipe Authors (Google LLC), under the **Apache Licen
 
 ---
 
+## Speech recognition models (downloaded at runtime, not bundled)
+
+Screeedit's captions run OpenAI Whisper in the browser. The model weights are not part of the extension; they are downloaded from Hugging Face the first time captions are generated and cached by the browser:
+
+- `onnx-community/whisper-tiny_timestamped`, `whisper-base_timestamped`, `whisper-small_timestamped`: ONNX conversions of [OpenAI Whisper](https://github.com/openai/whisper), Copyright (c) 2022 OpenAI, under the **MIT License**.
+
+---
+
 ## Components by license
 
 ### Apache License 2.0  
-_SPDX `Apache-2.0`, 2 packages_
+_SPDX `Apache-2.0`, 3 packages_
 
+- **@huggingface/transformers** @ 4.3.2, Copyright Hugging Face, Inc. (added by Screeedit for on-device captions)
 - **@mediapipe/tasks-vision** @ 0.10.32, Copyright 2019-2024 The MediaPipe Authors (Google LLC)
 - **localforage** @ 1.10.0, Copyright (c) 2013-2017 Mozilla
 
@@ -44,6 +53,7 @@ _SPDX `MPL-2.0`, 2 packages_
 ### MIT License  
 _SPDX `MIT`, 144 packages_
 
+- **onnxruntime-web** @ 1.31.0-dev.20260914, Copyright (c) Microsoft Corporation (added by Screeedit; its `ort-wasm-simd-threaded.asyncify` runtime files ship in `vendor/ort/`)
 - **@babel/runtime** @ 7.28.4, Copyright (c) 2014-present Sebastian McKenzie and other contributors
 - **@floating-ui/core** @ 1.7.3, Copyright (c) 2021-present Floating UI contributors
 - **@floating-ui/dom** @ 1.7.4, Copyright (c) 2021-present Floating UI contributors

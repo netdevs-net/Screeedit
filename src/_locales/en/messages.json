@@ -1,10 +1,10 @@
 {
   "extName": {
-    "message": "Screenity - Screen Recorder & Annotation Tool",
+    "message": "Screeedit - Screen Recorder & Video Editor",
     "description": "Extension name"
   },
   "extDesc": {
-    "message": "The free and privacy-friendly screen recorder for everyone. Capture, annotate, edit videos and more - all with no sign in needed.",
+    "message": "Record your screen, then edit on your device: trim, captions, text and drawing, backdrops, scenes and auto-zoom. Free and private, no sign-in.",
     "description": "Extension description"
   },
   "recordTab": {
@@ -48,7 +48,7 @@
     "description": "Camera / microphone permissions warning modal title"
   },
   "permissionsModalDescription": {
-    "message": "Looks like Screenity can’t access your camera or microphone. Make sure to allow access by clicking on the camera icon in the address bar.",
+    "message": "Looks like Screeedit can’t access your camera or microphone. Make sure to allow access by clicking on the camera icon in the address bar.",
     "description": "Camera / microphone permissions warning modal description"
   },
   "permissionsModalDismiss": {
@@ -76,7 +76,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Looks like Screenity couldn't load the recording from your device's storage. It may have been cleared or moved. If this keeps happening, please contact us at support@screenity.io.",
+    "message": "Looks like Screeedit couldn't load the recording from your device's storage. It may have been cleared or moved. If this keeps happening, please contact us at support@screenity.io.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "editorStuckTitle": {
@@ -84,7 +84,7 @@
     "description": "Modal title shown when the editor has been waiting on the post-stop pipeline for too long"
   },
   "editorStuckDescription": {
-    "message": "Screenity is taking longer than usual to load your recording. Your data may still be on this device. Try recovering it, or get in touch if it doesn't come back.",
+    "message": "Screeedit is taking longer than usual to load your recording. Your data may still be on this device. Try recovering it, or get in touch if it doesn't come back.",
     "description": "Modal description for the editor-stuck modal, offering recovery and help"
   },
   "editorStuckTryRecover": {
@@ -748,11 +748,11 @@
     "description": "Paused recording modal title"
   },
   "chromePermissionsModalTitle": {
-    "message": "Screenity doesn't have permission to record your screen",
+    "message": "Screeedit doesn't have permission to record your screen",
     "description": "Permission modal title"
   },
   "chromePermissionsModalDescription": {
-    "message": "To enable screen recording, you must grant Screenity permission to capture your screen when prompted.",
+    "message": "To enable screen recording, you must grant Screeedit permission to capture your screen when prompted.",
     "description": "Permission modal description"
   },
   "chromePermissionsModalAction": {
@@ -780,7 +780,7 @@
     "description": "Microphone muted modal cancel"
   },
   "setupTitle": {
-    "message": "Get started with Screenity in three simple steps:",
+    "message": "Get started with Screeedit in three simple steps:",
     "description": "Set up steps title"
   },
   "setupStep1Before": {
@@ -804,7 +804,7 @@
     "description": "Set up step 3, before the icon. It needs a space at the end."
   },
   "setupStep3After": {
-    "message": " Screenity icon to start",
+    "message": " Screeedit icon to start",
     "description": "Set up step 3, after the icon. It needs a space at the beginning."
   },
   "setupCompleteTitle": {
@@ -860,7 +860,7 @@
     "description": "Stop recording button in recording scren"
   },
   "updateAnnouncementTitle": {
-    "message": "Welcome to the new Screenity!",
+    "message": "Welcome to the new Screeedit!",
     "description": "Update announcement title for existing users"
   },
   "updateAnnouncementDescription": {
@@ -992,7 +992,7 @@
     "description": "Not enough space title"
   },
   "notEnoughSpaceDescription": {
-    "message": "Screenity needs at least 1GB of free space to record. Please free up some space and try again.",
+    "message": "Screeedit needs at least 1GB of free space to record. Please free up some space and try again.",
     "description": "Not enough space description"
   },
   "clearSpaceButton": {
@@ -1024,7 +1024,7 @@
     "description": "Raw recording modal title"
   },
   "rawRecordingModalDescription": {
-    "message": "The raw video file is the original video file that was recorded by Screenity. This video is not processed or edited, so it may be very large and may not be playable on all devices. If you are having issues with the processed video, you can use this file to recover your video.",
+    "message": "The raw video file is the original video file that was recorded by Screeedit. This video is not processed or edited, so it may be very large and may not be playable on all devices. If you are having issues with the processed video, you can use this file to recover your video.",
     "description": "Raw recording modal description"
   },
   "rawRecordingModalButton": {
@@ -1048,11 +1048,11 @@
     "description": "Over 5 minutes limit modal title"
   },
   "overLimitModalDescription": {
-    "message": "Since Screenity is completely private and runs locally, it's limited by your device's hardware. Processing a video of this length would take too long, and be very resource intensive. Don't worry, you can still download the WEBM file or the raw recording, but editing and MP4 export are not available. That said, you can still try to process the video anyway, if you understand the risks.",
+    "message": "Since Screeedit is completely private and runs locally, it's limited by your device's hardware. Processing a video of this length would take too long, and be very resource intensive. Don't worry, you can still download the WEBM file or the raw recording, but editing and MP4 export are not available. That said, you can still try to process the video anyway, if you understand the risks.",
     "description": "Over 5 minutes limit modal description"
   },
   "overLimitModalDescriptionFastPath": {
-    "message": "Since Screenity is completely private and runs locally, it's limited by your device's hardware. Processing a video of this length would take too long, and be very resource intensive. Your MP4 is ready to download as-is, but in-browser editing isn't available for clips this long. You can still try to process the video anyway, if you understand the risks.",
+    "message": "Since Screeedit is completely private and runs locally, it's limited by your device's hardware. Processing a video of this length would take too long, and be very resource intensive. Your MP4 is ready to download as-is, but in-browser editing isn't available for clips this long. You can still try to process the video anyway, if you understand the risks.",
     "description": "Over 5 minutes limit modal description when the recording is a native MP4 (fast recorder / WebCodecs)"
   },
   "overLimitModalButton": {
@@ -1110,7 +1110,7 @@
     "description": "Extension not supported on tab"
   },
   "extensionNotSupportedDescription": {
-    "message": "Screenity wasn't supported in your previous tab. You can still start your recording here and switch back to the tab, but your camera and toolbar won't be visible.",
+    "message": "Screeedit wasn't supported in your previous tab. You can still start your recording here and switch back to the tab, but your camera and toolbar won't be visible.",
     "description": "Extension not supported on tab description"
   },
   "backupsDescription1": {
@@ -1364,7 +1364,7 @@
     "description": "Button label to go to the dashboard in the popup"
   },
   "welcomePopupTitle": {
-    "message": "Welcome to Screenity",
+    "message": "Welcome to Screeedit",
     "description": "Title for the welcome popup shown to new users"
   },
   "welcomePopupDescriptionTop": {
@@ -1616,7 +1616,7 @@
     "description": "Self-host banner description in the editor"
   },
   "welcomeBackPopupTitle": {
-    "message": "Welcome back to Screenity",
+    "message": "Welcome back to Screeedit",
     "description": "Title for the welcome back popup shown to returning users"
   },
   "welcomeBackProTitle": {
@@ -1820,7 +1820,7 @@
     "description": "Toast shown before the screen picker reopens because system audio could not start and capture is retrying without it"
   },
   "editorRecoveryToast": {
-    "message": "Your recording is saved. The editor didn't open. Click the Screenity icon to try again.",
+    "message": "Your recording is saved. The editor didn't open. Click the Screeedit icon to try again.",
     "description": "Toast shown on the active tab when the post-recording editor tab fails to open"
   },
   "stopAckTimeoutToast": {
@@ -1880,7 +1880,7 @@
     "description": "Modal title when Google Drive authentication expired or was revoked"
   },
   "driveAuthModalDescription": {
-    "message": "Google didn't let Screenity sign in. Try again with a different Google account, or download the video instead. School and work accounts can block this.",
+    "message": "Google didn't let Screeedit sign in. Try again with a different Google account, or download the video instead. School and work accounts can block this.",
     "description": "Modal description when Google Drive authentication expired or was revoked"
   },
   "recordingCorruptToast": {

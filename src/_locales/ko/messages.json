@@ -44,7 +44,7 @@
     "description": "Review prompt dismiss button on the unhappy branch"
   },
   "extName": {
-    "message": "Screenity - 화면 녹화 프로그램 & 주석 도구",
+    "message": "Screeedit - 화면 녹화 프로그램 & 주석 도구",
     "description": "Extension name"
   },
   "extDesc": {
@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Screenity가 기기 저장소에서 녹화 파일을 불러오지 못했어요. 삭제되었거나 이동되었을 수 있어요. 계속 발생하면 support@screenity.io로 문의해 주세요.",
+    "message": "Screeedit가 기기 저장소에서 녹화 파일을 불러오지 못했어요. 삭제되었거나 이동되었을 수 있어요. 계속 발생하면 support@screenity.io로 문의해 주세요.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -740,11 +740,11 @@
     "description": "Paused recording modal title"
   },
   "chromePermissionsModalTitle": {
-    "message": "Screenity가 화면 녹화 권한이 없습니다",
+    "message": "Screeedit가 화면 녹화 권한이 없습니다",
     "description": "Permission modal title"
   },
   "chromePermissionsModalDescription": {
-    "message": "화면 녹화를 사용하려면 Screenity에게 화면 캡처 권한을 부여해야 합니다.",
+    "message": "화면 녹화를 사용하려면 Screeedit에게 화면 캡처 권한을 부여해야 합니다.",
     "description": "Permission modal description"
   },
   "chromePermissionsModalAction": {
@@ -772,7 +772,7 @@
     "description": "Microphone muted modal cancel"
   },
   "setupTitle": {
-    "message": "Screenity로 세 가지 간단한 단계로 시작하세요:",
+    "message": "Screeedit로 세 가지 간단한 단계로 시작하세요:",
     "description": "Set up steps title"
   },
   "setupStep1Before": {
@@ -796,7 +796,7 @@
     "description": "Set up step 3, before the icon. It needs a space at the end."
   },
   "setupStep3After": {
-    "message": " Screenity 아이콘을 시작하려면",
+    "message": " Screeedit 아이콘을 시작하려면",
     "description": "Set up step 3, after the icon. It needs a space at the beginning."
   },
   "setupCompleteTitle": {
@@ -852,7 +852,7 @@
     "description": "Stop recording button in recording screen"
   },
   "updateAnnouncementTitle": {
-    "message": "새로운 Screenity에 오신 것을 환영합니다!",
+    "message": "새로운 Screeedit에 오신 것을 환영합니다!",
     "description": "기존 사용자를 위한 업데이트 공지 제목"
   },
   "updateAnnouncementDescription": {
@@ -952,7 +952,7 @@
     "description": "공간 부족 제목"
   },
   "notEnoughSpaceDescription": {
-    "message": "Screenity는 녹화를 위해 최소 1GB의 빈 공간이 필요합니다. 장치의 공간을 확보하고 다시 시도하십시오.",
+    "message": "Screeedit는 녹화를 위해 최소 1GB의 빈 공간이 필요합니다. 장치의 공간을 확보하고 다시 시도하십시오.",
     "description": "공간 부족 설명"
   },
   "clearSpaceButton": {
@@ -984,7 +984,7 @@
     "description": "원시 녹화 모달 제목"
   },
   "rawRecordingModalDescription": {
-    "message": "원시 비디오 파일은 Screenity에 의해 녹화된 원본 비디오 파일입니다. 이 비디오는 처리되거나 편집되지 않았으므로 매우 크며 모든 장치에서 재생되지 않을 수 있습니다. 처리된 비디오에 문제가 있는 경우이 파일을 사용하여 비디오를 복구할 수 있습니다.",
+    "message": "원시 비디오 파일은 Screeedit에 의해 녹화된 원본 비디오 파일입니다. 이 비디오는 처리되거나 편집되지 않았으므로 매우 크며 모든 장치에서 재생되지 않을 수 있습니다. 처리된 비디오에 문제가 있는 경우이 파일을 사용하여 비디오를 복구할 수 있습니다.",
     "description": "원시 녹화 모달 설명"
   },
   "rawRecordingModalButton": {
@@ -1008,11 +1008,11 @@
     "description": "5분 이상 제한 모달 제목"
   },
   "overLimitModalDescription": {
-    "message": "Screenity는 완전히 개인적이며 로컬에서 실행되므로 디바이스의 하드웨어에 제한됩니다. 이 길이의 비디오를 처리하는 데 시간이 오래 걸리고 많은 리소스를 필요로 할 것입니다. 걱정하지 마세요. 여전히 WEBM 파일이나 원시 녹화를 다운로드할 수 있지만 편집 및 MP4 내보내기는 사용할 수 없습니다. 그럼에도 불구하고, 이 비디오를 처리해 보려고 할 수 있습니다. 단, 위험을 이해하는 경우에만 시도하십시오.",
+    "message": "Screeedit는 완전히 개인적이며 로컬에서 실행되므로 디바이스의 하드웨어에 제한됩니다. 이 길이의 비디오를 처리하는 데 시간이 오래 걸리고 많은 리소스를 필요로 할 것입니다. 걱정하지 마세요. 여전히 WEBM 파일이나 원시 녹화를 다운로드할 수 있지만 편집 및 MP4 내보내기는 사용할 수 없습니다. 그럼에도 불구하고, 이 비디오를 처리해 보려고 할 수 있습니다. 단, 위험을 이해하는 경우에만 시도하십시오.",
     "description": "5분 이상 제한 모달 설명"
   },
   "overLimitModalDescriptionFastPath": {
-    "message": "Screenity는 완전히 개인적이며 로컬에서 실행되므로 디바이스의 하드웨어에 제한됩니다. 이 길이의 비디오를 처리하는 데 시간이 오래 걸리고 많은 리소스를 필요로 할 것입니다. MP4 파일은 바로 다운로드할 수 있지만, 이 정도 길이의 클립은 브라우저 내 편집이 지원되지 않습니다. 그럼에도 불구하고, 위험을 이해하는 경우에만 이 비디오를 처리해 볼 수 있습니다.",
+    "message": "Screeedit는 완전히 개인적이며 로컬에서 실행되므로 디바이스의 하드웨어에 제한됩니다. 이 길이의 비디오를 처리하는 데 시간이 오래 걸리고 많은 리소스를 필요로 할 것입니다. MP4 파일은 바로 다운로드할 수 있지만, 이 정도 길이의 클립은 브라우저 내 편집이 지원되지 않습니다. 그럼에도 불구하고, 위험을 이해하는 경우에만 이 비디오를 처리해 볼 수 있습니다.",
     "description": "Over 5 minutes limit modal description when the recording is a native MP4 (fast recorder / WebCodecs)"
   },
   "overLimitModalButton": {
@@ -1054,7 +1054,7 @@
     "description": "탭에서 지원되지 않는 확장 프로그램 제목"
   },
   "extensionNotSupportedDescription": {
-    "message": "Screenity는 이전 탭에서 지원되지 않았습니다. 그럼에도 불구하고 여기에서 녹음을 시작한 다음 다른 탭으로 전환할 수 있지만 카메라와 도구 모음은 표시되지 않습니다.",
+    "message": "Screeedit는 이전 탭에서 지원되지 않았습니다. 그럼에도 불구하고 여기에서 녹음을 시작한 다음 다른 탭으로 전환할 수 있지만 카메라와 도구 모음은 표시되지 않습니다.",
     "description": "탭에서 지원되지 않는 확장 프로그램 설명"
   },
   "backupsDescription1": {
@@ -1308,7 +1308,7 @@
     "description": "Button label to go to the dashboard in the popup"
   },
   "welcomePopupTitle": {
-    "message": "Screenity에 오신 것을 환영합니다",
+    "message": "Screeedit에 오신 것을 환영합니다",
     "description": "Title for the welcome popup shown to new users"
   },
   "welcomePopupDescriptionTop": {
@@ -1516,7 +1516,7 @@
     "description": "에디터에서의 셀프 호스트 배너 설명"
   },
   "welcomeBackPopupTitle": {
-    "message": "Screenity에 다시 오신 걸 환영해요",
+    "message": "Screeedit에 다시 오신 걸 환영해요",
     "description": "다시 방문한 사용자에게 보여지는 환영 팝업의 제목"
   },
   "welcomeBackProTitle": {
@@ -1696,7 +1696,7 @@
     "description": "Toast shown before the screen picker reopens because system audio could not start and capture is retrying without it"
   },
   "editorRecoveryToast": {
-    "message": "녹화가 저장되었어요. 편집기가 열리지 않았습니다. Screenity 아이콘을 클릭해서 다시 시도하세요.",
+    "message": "녹화가 저장되었어요. 편집기가 열리지 않았습니다. Screeedit 아이콘을 클릭해서 다시 시도하세요.",
     "description": "Toast shown on the active tab when the post-recording editor tab fails to open"
   },
   "stopAckTimeoutToast": {
@@ -1886,7 +1886,7 @@
     "description": "Modal title when Google Drive authentication expired or was revoked"
   },
   "driveAuthModalDescription": {
-    "message": "Google에서 Screenity의 로그인을 허용하지 않았어요. 다른 Google 계정으로 다시 시도하거나 대신 동영상을 다운로드해 주세요. 학교나 회사 계정은 이를 차단할 수 있어요.",
+    "message": "Google에서 Screeedit의 로그인을 허용하지 않았어요. 다른 Google 계정으로 다시 시도하거나 대신 동영상을 다운로드해 주세요. 학교나 회사 계정은 이를 차단할 수 있어요.",
     "description": "Modal description when Google Drive authentication expired or was revoked"
   },
   "emptyRecordingTitle": {

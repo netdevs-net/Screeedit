@@ -44,7 +44,7 @@
     "description": "Review prompt dismiss button on the unhappy branch"
   },
   "extName": {
-    "message": "Screenity - Запис екрану & Анотації",
+    "message": "Screeedit - Запис екрану & Анотації",
     "description": "Extension name"
   },
   "extDesc": {
@@ -92,7 +92,7 @@
     "description": "Camera / microphone permissions warning modal title"
   },
   "permissionsModalDescription": {
-    "message": "Схоже, що Screenity не може отримати доступ до вашої камери або мікрофону. Обов'язково дозвольте доступ, натиснувши на значок камери у панелі адреси.",
+    "message": "Схоже, що Screeedit не може отримати доступ до вашої камери або мікрофону. Обов'язково дозвольте доступ, натиснувши на значок камери у панелі адреси.",
     "description": "Camera / microphone permissions warning modal description"
   },
   "permissionsModalDismiss": {
@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Схоже, Screenity не зміг завантажити запис зі сховища вашого пристрою. Можливо, його було очищено або переміщено. Якщо це повторюється, зв'яжіться з нами за адресою support@screenity.io.",
+    "message": "Схоже, Screeedit не зміг завантажити запис зі сховища вашого пристрою. Можливо, його було очищено або переміщено. Якщо це повторюється, зв'яжіться з нами за адресою support@screenity.io.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -740,11 +740,11 @@
     "description": "Paused recording modal title"
   },
   "chromePermissionsModalTitle": {
-    "message": "Screenity не має дозволу на запис вашого екрану",
+    "message": "Screeedit не має дозволу на запис вашого екрану",
     "description": "Permission modal title"
   },
   "chromePermissionsModalDescription": {
-    "message": "Щоб увімкнути запис екрану, вам слід дозволити Screenity захоплювати ваш екран, коли це буде запитано.",
+    "message": "Щоб увімкнути запис екрану, вам слід дозволити Screeedit захоплювати ваш екран, коли це буде запитано.",
     "description": "Permission modal description"
   },
   "chromePermissionsModalAction": {
@@ -772,7 +772,7 @@
     "description": "Microphone muted modal cancel"
   },
   "setupTitle": {
-    "message": "Почніть використовувати Screenity за три простих кроки:",
+    "message": "Почніть використовувати Screeedit за три простих кроки:",
     "description": "Set up steps title"
   },
   "setupStep1Before": {
@@ -796,7 +796,7 @@
     "description": "Set up step 3, before the icon. It needs a space at the end."
   },
   "setupStep3After": {
-    "message": " значок Screenity, щоб розпочати",
+    "message": " значок Screeedit, щоб розпочати",
     "description": "Set up step 3, after the icon. It needs a space at the beginning."
   },
   "setupCompleteTitle": {
@@ -852,7 +852,7 @@
     "description": "Stop recording button in recording screen"
   },
   "updateAnnouncementTitle": {
-    "message": "Ласкаво просимо до нового Screenity!",
+    "message": "Ласкаво просимо до нового Screeedit!",
     "description": "Заголовок оголошення про оновлення для існуючих користувачів"
   },
   "updateAnnouncementDescription": {
@@ -952,7 +952,7 @@
     "description": "Заголовок повідомлення про недостатньо місця"
   },
   "notEnoughSpaceDescription": {
-    "message": "Для роботи Screenity потрібно принаймні 1 ГБ вільного місця. Будь ласка, звільніть простір на пристрої і спробуйте ще раз.",
+    "message": "Для роботи Screeedit потрібно принаймні 1 ГБ вільного місця. Будь ласка, звільніть простір на пристрої і спробуйте ще раз.",
     "description": "Опис повідомлення про недостатньо місця"
   },
   "clearSpaceButton": {
@@ -984,7 +984,7 @@
     "description": "Заголовок модального вікна сирого запису"
   },
   "rawRecordingModalDescription": {
-    "message": "Сирі відеофайли - це оригінальний відеофайл, який був записаний Screenity. Цей відеофайл не оброблявся або редагувався, тому він може бути дуже великим і не всі пристрої можуть його програвати. Якщо у вас є проблеми з обробленим відео, ви можете використовувати цей файл для відновлення відео.",
+    "message": "Сирі відеофайли - це оригінальний відеофайл, який був записаний Screeedit. Цей відеофайл не оброблявся або редагувався, тому він може бути дуже великим і не всі пристрої можуть його програвати. Якщо у вас є проблеми з обробленим відео, ви можете використовувати цей файл для відновлення відео.",
     "description": "Опис модального вікна сирого запису"
   },
   "rawRecordingModalButton": {
@@ -1008,11 +1008,11 @@
     "description": "Заголовок модального вікна обмеження понад 5 хвилин"
   },
   "overLimitModalDescription": {
-    "message": "Оскільки Screenity цілком приватний і працює локально, він обмежений апаратним забезпеченням вашого пристрою. Обробка відео цієї довжини займе дуже багато часу та буде вимагати значних ресурсів. Однак ви все ще можете завантажити файл WEBM або необроблену запису, але можливості редагування та експорту в MP4 недоступні. Так чи інакше, ви можете спробувати обробити відео, якщо розумієте ризики.",
+    "message": "Оскільки Screeedit цілком приватний і працює локально, він обмежений апаратним забезпеченням вашого пристрою. Обробка відео цієї довжини займе дуже багато часу та буде вимагати значних ресурсів. Однак ви все ще можете завантажити файл WEBM або необроблену запису, але можливості редагування та експорту в MP4 недоступні. Так чи інакше, ви можете спробувати обробити відео, якщо розумієте ризики.",
     "description": "Опис модального вікна обмеження понад 5 хвилин"
   },
   "overLimitModalDescriptionFastPath": {
-    "message": "Оскільки Screenity цілком приватний і працює локально, він обмежений апаратним забезпеченням вашого пристрою. Обробка відео цієї довжини займе дуже багато часу та буде вимагати значних ресурсів. Ваш файл MP4 готовий до завантаження, але редагування в браузері недоступне для записів такої довжини. Так чи інакше, ви можете спробувати обробити відео, якщо розумієте ризики.",
+    "message": "Оскільки Screeedit цілком приватний і працює локально, він обмежений апаратним забезпеченням вашого пристрою. Обробка відео цієї довжини займе дуже багато часу та буде вимагати значних ресурсів. Ваш файл MP4 готовий до завантаження, але редагування в браузері недоступне для записів такої довжини. Так чи інакше, ви можете спробувати обробити відео, якщо розумієте ризики.",
     "description": "Over 5 minutes limit modal description when the recording is a native MP4 (fast recorder / WebCodecs)"
   },
   "overLimitModalButton": {
@@ -1054,7 +1054,7 @@
     "description": "Заголовок попередження про непідтримку розширення на вкладці"
   },
   "extensionNotSupportedDescription": {
-    "message": "Screenity не підтримувався на вашій попередній вкладці. Проте ви можете розпочати запис тут, а потім перейти на вкладку, але ваша камера і панель інструментів не будуть видимими.",
+    "message": "Screeedit не підтримувався на вашій попередній вкладці. Проте ви можете розпочати запис тут, а потім перейти на вкладку, але ваша камера і панель інструментів не будуть видимими.",
     "description": "Опис попередження про непідтримку розширення на вкладці"
   },
   "backupsDescription1": {
@@ -1308,7 +1308,7 @@
     "description": "Button label to go to the dashboard in the popup"
   },
   "welcomePopupTitle": {
-    "message": "Ласкаво просимо до Screenity",
+    "message": "Ласкаво просимо до Screeedit",
     "description": "Title for the welcome popup shown to new users"
   },
   "welcomePopupDescriptionTop": {
@@ -1508,7 +1508,7 @@
     "description": "Button to upgrade to Pro"
   },
   "welcomeBackPopupTitle": {
-    "message": "З поверненням до Screenity",
+    "message": "З поверненням до Screeedit",
     "description": "Заголовок для вікна привітання для користувачів, які повернулися"
   },
   "welcomeBackProTitle": {
@@ -1688,7 +1688,7 @@
     "description": "Toast shown before the screen picker reopens because system audio could not start and capture is retrying without it"
   },
   "editorRecoveryToast": {
-    "message": "Запис збережено. Редактор не відкрився. Натисніть на значок Screenity, щоб спробувати знову.",
+    "message": "Запис збережено. Редактор не відкрився. Натисніть на значок Screeedit, щоб спробувати знову.",
     "description": "Toast shown on the active tab when the post-recording editor tab fails to open"
   },
   "stopAckTimeoutToast": {
@@ -1731,7 +1731,7 @@
     "message": "Запис ще готується…"
   },
   "editorStuckDescription": {
-    "message": "Screenity завантажує ваш запис довше, ніж зазвичай. Можливо, ваші дані ще зберігаються на цьому пристрої. Спробуйте відновити запис або зв'яжіться з нами, якщо він не повернеться."
+    "message": "Screeedit завантажує ваш запис довше, ніж зазвичай. Можливо, ваші дані ще зберігаються на цьому пристрої. Спробуйте відновити запис або зв'яжіться з нами, якщо він не повернеться."
   },
   "editorStuckTryRecover": {
     "message": "Спробувати відновити"
@@ -1884,7 +1884,7 @@
     "description": "Modal title when Google Drive authentication expired or was revoked"
   },
   "driveAuthModalDescription": {
-    "message": "Google не дозволив Screenity увійти. Спробуйте інший обліковий запис Google або завантажте відео. Шкільні та робочі облікові записи можуть це блокувати.",
+    "message": "Google не дозволив Screeedit увійти. Спробуйте інший обліковий запис Google або завантажте відео. Шкільні та робочі облікові записи можуть це блокувати.",
     "description": "Modal description when Google Drive authentication expired or was revoked"
   },
   "emptyRecordingTitle": {

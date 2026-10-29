@@ -240,7 +240,7 @@ export const drawBackdrop = (ctx, frame, L, { source, image } = {}) => {
       ctx.font = `${Math.round(ph * 0.5)}px "Satoshi-Medium", sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(frame.url || "screeedit.app", device.x + device.w / 2, cy + 0.05 * u);
+      ctx.fillText(frame.url || "example.com", device.x + device.w / 2, cy + 0.05 * u);
     }
   } else {
     // Hardware: dark bezel with a subtle rim.

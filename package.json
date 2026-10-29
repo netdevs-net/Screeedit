@@ -1,7 +1,7 @@
 {
-  "name": "screenity",
+  "name": "screeedit",
   "version": "4.7.2",
-  "description": "The free and privacy-friendly screen recorder with no sign in needed.",
+  "description": "Screen recorder and on-device video editor, built on Screenity.",
   "scripts": {
     "build": "cross-env NODE_ENV=production node utils/build.js",
     "build:dev": "cross-env NODE_ENV=development SCREENITY_DEV_MODE=true node utils/build.js",

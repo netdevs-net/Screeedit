@@ -44,7 +44,7 @@
     "description": "Review prompt dismiss button on the unhappy branch"
   },
   "extName": {
-    "message": "Screenity - Grave e faça anotações na tela",
+    "message": "Screeedit - Grave e faça anotações na tela",
     "description": "Nome da extensão"
   },
   "extDesc": {
@@ -92,7 +92,7 @@
     "description": "Título do modal de aviso de permissões de câmera/microfone"
   },
   "permissionsModalDescription": {
-    "message": "Parece que o Screenity não consegue acessar sua câmera ou microfone. Certifique-se de permitir o acesso clicando no ícone da câmera na barra de endereço.",
+    "message": "Parece que o Screeedit não consegue acessar sua câmera ou microfone. Certifique-se de permitir o acesso clicando no ícone da câmera na barra de endereço.",
     "description": "Descrição do modal de aviso de permissões de câmera/microfone"
   },
   "permissionsModalDismiss": {
@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Parece que o Screenity não conseguiu carregar a gravação do armazenamento do seu dispositivo. Ela pode ter sido apagada ou movida. Se isso continuar acontecendo, entre em contato conosco em support@screenity.io.",
+    "message": "Parece que o Screeedit não conseguiu carregar a gravação do armazenamento do seu dispositivo. Ela pode ter sido apagada ou movida. Se isso continuar acontecendo, entre em contato conosco em support@screenity.io.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -740,11 +740,11 @@
     "description": "Título do modal de gravação pausada"
   },
   "chromePermissionsModalTitle": {
-    "message": "O Screenity não tem permissão para gravar a sua tela",
+    "message": "O Screeedit não tem permissão para gravar a sua tela",
     "description": "Título do modal de permissões"
   },
   "chromePermissionsModalDescription": {
-    "message": "Para permitir a gravação de tela, você deve conceder permissões ao Screenity.",
+    "message": "Para permitir a gravação de tela, você deve conceder permissões ao Screeedit.",
     "description": "Descrição do modal de permissões"
   },
   "chromePermissionsModalAction": {
@@ -772,7 +772,7 @@
     "description": "Cancelar do modal de microfone desligado"
   },
   "setupTitle": {
-    "message": "Comece com o Screenity em três passos simples:",
+    "message": "Comece com o Screeedit em três passos simples:",
     "description": "Título dos passos de configuração"
   },
   "setupStep1Before": {
@@ -796,7 +796,7 @@
     "description": "Passo 3 de configuração, antes do ícone. Precisa de um espaço no final."
   },
   "setupStep3After": {
-    "message": " Screenity para começar",
+    "message": " Screeedit para começar",
     "description": "Passo 3 de configuração, depois do ícone. Precisa de um espaço no início."
   },
   "setupCompleteTitle": {
@@ -852,7 +852,7 @@
     "description": "Botão de parar a gravação na tela de gravação"
   },
   "updateAnnouncementTitle": {
-    "message": "Bem-vindo ao novo Screenity!",
+    "message": "Bem-vindo ao novo Screeedit!",
     "description": "Título do anúncio de atualização para usuários existentes"
   },
   "updateAnnouncementDescription": {
@@ -952,7 +952,7 @@
     "description": "Título de espaço insuficiente"
   },
   "notEnoughSpaceDescription": {
-    "message": "O Screenity precisa de pelo menos 1 GB de espaço livre para gravar. Por favor, libere espaço e tente novamente.",
+    "message": "O Screeedit precisa de pelo menos 1 GB de espaço livre para gravar. Por favor, libere espaço e tente novamente.",
     "description": "Descrição de espaço insuficiente"
   },
   "clearSpaceButton": {
@@ -984,7 +984,7 @@
     "description": "Título do modal de gravação bruta"
   },
   "rawRecordingModalDescription": {
-    "message": "O arquivo de vídeo bruto é o arquivo original gravado pelo Screenity. Este vídeo não foi processado ou editado, portanto, pode ser muito grande e pode não ser reproduzido em todos os dispositivos. Se você estiver enfrentando problemas com o vídeo processado, pode usar este arquivo para recuperar seu vídeo.",
+    "message": "O arquivo de vídeo bruto é o arquivo original gravado pelo Screeedit. Este vídeo não foi processado ou editado, portanto, pode ser muito grande e pode não ser reproduzido em todos os dispositivos. Se você estiver enfrentando problemas com o vídeo processado, pode usar este arquivo para recuperar seu vídeo.",
     "description": "Descrição do modal de gravação bruta"
   },
   "rawRecordingModalButton": {
@@ -1008,11 +1008,11 @@
     "description": "Título do modal de limite superior a 5 minutos"
   },
   "overLimitModalDescription": {
-    "message": "Uma vez que o Screenity é completamente privado e é executado localmente, está limitado pelo hardware do seu dispositivo. O processamento de um vídeo dessa duração levaria muito tempo e seria muito intensivo em recursos. Não se preocupe, você ainda pode baixar o arquivo WEBM ou a gravação bruta, mas a edição e a exportação para MP4 não estão disponíveis. Dito isso, você ainda pode tentar processar o vídeo, mesmo sabendo dos riscos.",
+    "message": "Uma vez que o Screeedit é completamente privado e é executado localmente, está limitado pelo hardware do seu dispositivo. O processamento de um vídeo dessa duração levaria muito tempo e seria muito intensivo em recursos. Não se preocupe, você ainda pode baixar o arquivo WEBM ou a gravação bruta, mas a edição e a exportação para MP4 não estão disponíveis. Dito isso, você ainda pode tentar processar o vídeo, mesmo sabendo dos riscos.",
     "description": "Descrição do modal de limite superior a 5 minutos"
   },
   "overLimitModalDescriptionFastPath": {
-    "message": "Uma vez que o Screenity é completamente privado e é executado localmente, está limitado pelo hardware do seu dispositivo. O processamento de um vídeo dessa duração levaria muito tempo e seria muito intensivo em recursos. Seu MP4 já está pronto para download, mas a edição no navegador não está disponível para clipes tão longos. Dito isso, você ainda pode tentar processar o vídeo, mesmo sabendo dos riscos.",
+    "message": "Uma vez que o Screeedit é completamente privado e é executado localmente, está limitado pelo hardware do seu dispositivo. O processamento de um vídeo dessa duração levaria muito tempo e seria muito intensivo em recursos. Seu MP4 já está pronto para download, mas a edição no navegador não está disponível para clipes tão longos. Dito isso, você ainda pode tentar processar o vídeo, mesmo sabendo dos riscos.",
     "description": "Over 5 minutes limit modal description when the recording is a native MP4 (fast recorder / WebCodecs)"
   },
   "overLimitModalButton": {
@@ -1054,7 +1054,7 @@
     "description": "Título de Extensão não Suportada na Guia"
   },
   "extensionNotSupportedDescription": {
-    "message": "O Screenity não foi suportado na sua guia anterior. Ainda é possível iniciar a sua gravação aqui e alternar para a guia, mas a sua câmera e barra de ferramentas não serão visíveis.",
+    "message": "O Screeedit não foi suportado na sua guia anterior. Ainda é possível iniciar a sua gravação aqui e alternar para a guia, mas a sua câmera e barra de ferramentas não serão visíveis.",
     "description": "Descrição de Extensão não Suportada na Guia"
   },
   "backupsDescription1": {
@@ -1308,7 +1308,7 @@
     "description": "Button label to go to the dashboard in the popup"
   },
   "welcomePopupTitle": {
-    "message": "Bem-vinda ao Screenity",
+    "message": "Bem-vinda ao Screeedit",
     "description": "Title for the welcome popup shown to new users"
   },
   "welcomePopupDescriptionTop": {
@@ -1516,7 +1516,7 @@
     "description": "Descrição do banner de auto-hospedagem no editor"
   },
   "welcomeBackPopupTitle": {
-    "message": "Bem-vindo de volta ao Screenity",
+    "message": "Bem-vindo de volta ao Screeedit",
     "description": "Título do popup de boas-vindas mostrado aos usuários que retornam"
   },
   "welcomeBackProTitle": {
@@ -1696,7 +1696,7 @@
     "description": "Toast shown before the screen picker reopens because system audio could not start and capture is retrying without it"
   },
   "editorRecoveryToast": {
-    "message": "Sua gravação foi salva. O editor não abriu. Clique no ícone do Screenity para tentar novamente.",
+    "message": "Sua gravação foi salva. O editor não abriu. Clique no ícone do Screeedit para tentar novamente.",
     "description": "Toast shown on the active tab when the post-recording editor tab fails to open"
   },
   "stopAckTimeoutToast": {
@@ -1739,7 +1739,7 @@
     "message": "Ainda preparando sua gravação…"
   },
   "editorStuckDescription": {
-    "message": "O Screenity está demorando mais que o normal para carregar sua gravação. Seus dados podem ainda estar neste dispositivo. Tente recuperá-la, ou entre em contato se ela não voltar."
+    "message": "O Screeedit está demorando mais que o normal para carregar sua gravação. Seus dados podem ainda estar neste dispositivo. Tente recuperá-la, ou entre em contato se ela não voltar."
   },
   "editorStuckTryRecover": {
     "message": "Tentar recuperar"
@@ -1886,7 +1886,7 @@
     "description": "Modal title when Google Drive authentication expired or was revoked"
   },
   "driveAuthModalDescription": {
-    "message": "O Google não permitiu que o Screenity fizesse login. Tente novamente com outra conta do Google ou baixe o vídeo. Contas de escola ou trabalho podem bloquear isso.",
+    "message": "O Google não permitiu que o Screeedit fizesse login. Tente novamente com outra conta do Google ou baixe o vídeo. Contas de escola ou trabalho podem bloquear isso.",
     "description": "Modal description when Google Drive authentication expired or was revoked"
   },
   "emptyRecordingTitle": {

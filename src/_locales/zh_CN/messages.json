@@ -44,7 +44,7 @@
     "description": "Review prompt dismiss button on the unhappy branch"
   },
   "extName": {
-    "message": "Screenity - 屏幕录像和标注工具",
+    "message": "Screeedit - 屏幕录像和标注工具",
     "description": "Extension name"
   },
   "extDesc": {
@@ -92,7 +92,7 @@
     "description": "Camera / microphone permissions warning modal title"
   },
   "permissionsModalDescription": {
-    "message": "看起来Screenity无法访问您的摄像头或麦克风。请确保通过单击地址栏中的摄像机图标允许访问。",
+    "message": "看起来Screeedit无法访问您的摄像头或麦克风。请确保通过单击地址栏中的摄像机图标允许访问。",
     "description": "Camera / microphone permissions warning modal description"
   },
   "permissionsModalDismiss": {
@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Screenity 无法从您设备的存储中加载录制内容。它可能已被清除或移动。如果此问题持续存在，请通过 support@screenity.io 联系我们。",
+    "message": "Screeedit 无法从您设备的存储中加载录制内容。它可能已被清除或移动。如果此问题持续存在，请通过 support@screenity.io 联系我们。",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -740,11 +740,11 @@
     "description": "Paused recording modal title"
   },
   "chromePermissionsModalTitle": {
-    "message": "Screenity 没有权限录制您的屏幕",
+    "message": "Screeedit 没有权限录制您的屏幕",
     "description": "Permission modal title"
   },
   "chromePermissionsModalDescription": {
-    "message": "为启用屏幕录制，您必须在提示时授予 Screenity 捕获屏幕的权限。",
+    "message": "为启用屏幕录制，您必须在提示时授予 Screeedit 捕获屏幕的权限。",
     "description": "Permission modal description"
   },
   "chromePermissionsModalAction": {
@@ -772,7 +772,7 @@
     "description": "Microphone muted modal cancel"
   },
   "setupTitle": {
-    "message": "在三个简单步骤中开始使用Screenity：",
+    "message": "在三个简单步骤中开始使用Screeedit：",
     "description": "Set up steps title"
   },
   "setupStep1Before": {
@@ -796,7 +796,7 @@
     "description": "Set up step 3, before the icon. It needs a space at the end."
   },
   "setupStep3After": {
-    "message": " Screenity图标以启动",
+    "message": " Screeedit图标以启动",
     "description": "Set up step 3, after the icon. It needs a space at the beginning."
   },
   "setupCompleteTitle": {
@@ -848,7 +848,7 @@
     "description": "Only show toolbar on hover button"
   },
   "updateAnnouncementTitle": {
-    "message": "欢迎使用新版 Screenity！",
+    "message": "欢迎使用新版 Screeedit！",
     "description": "现有用户的更新公告标题"
   },
   "updateAnnouncementDescription": {
@@ -948,7 +948,7 @@
     "description": "空间不足标题"
   },
   "notEnoughSpaceDescription": {
-    "message": "Screenity需要至少1GB的空闲空间进行录制。请释放设备上的空间并重试。",
+    "message": "Screeedit需要至少1GB的空闲空间进行录制。请释放设备上的空间并重试。",
     "description": "空间不足描述"
   },
   "clearSpaceButton": {
@@ -980,7 +980,7 @@
     "description": "原始录制模态框标题"
   },
   "rawRecordingModalDescription": {
-    "message": "原始视频文件是由Screenity录制的原始视频文件。此视频未经处理或编辑，因此可能非常大且可能无法在所有设备上播放。如果您在处理后的视频方面遇到问题，可以使用此文件恢复您的视频。",
+    "message": "原始视频文件是由Screeedit录制的原始视频文件。此视频未经处理或编辑，因此可能非常大且可能无法在所有设备上播放。如果您在处理后的视频方面遇到问题，可以使用此文件恢复您的视频。",
     "description": "原始录制模态框描述"
   },
   "rawRecordingModalButton": {
@@ -1004,11 +1004,11 @@
     "description": "超过5分钟限制的模态框标题"
   },
   "overLimitModalDescription": {
-    "message": "由于Screenity完全私密且在本地运行，它受到您设备硬件的限制。处理这样长度的视频需要很长时间，而且资源消耗很大。但您仍然可以下载WEBM文件或原始录制文件，但无法进行编辑和MP4导出。尽管如此，如果您了解风险，仍然可以尝试处理该视频。",
+    "message": "由于Screeedit完全私密且在本地运行，它受到您设备硬件的限制。处理这样长度的视频需要很长时间，而且资源消耗很大。但您仍然可以下载WEBM文件或原始录制文件，但无法进行编辑和MP4导出。尽管如此，如果您了解风险，仍然可以尝试处理该视频。",
     "description": "超过5分钟限制的模态框描述"
   },
   "overLimitModalDescriptionFastPath": {
-    "message": "由于Screenity完全私密且在本地运行，它受到您设备硬件的限制。处理这样长度的视频需要很长时间，而且资源消耗很大。您的MP4已准备好可以直接下载，但此类长度的视频无法在浏览器中编辑。尽管如此，如果您了解风险，仍然可以尝试处理该视频。",
+    "message": "由于Screeedit完全私密且在本地运行，它受到您设备硬件的限制。处理这样长度的视频需要很长时间，而且资源消耗很大。您的MP4已准备好可以直接下载，但此类长度的视频无法在浏览器中编辑。尽管如此，如果您了解风险，仍然可以尝试处理该视频。",
     "description": "Over 5 minutes limit modal description when the recording is a native MP4 (fast recorder / WebCodecs)"
   },
   "overLimitModalButton": {
@@ -1050,7 +1050,7 @@
     "description": "选项卡上不支持的扩展标题"
   },
   "extensionNotSupportedDescription": {
-    "message": "Screenity在您之前的选项卡上不受支持。尽管如此，您可以在此开始录制，然后切换到选项卡，但您的摄像头和工具栏将不可见。",
+    "message": "Screeedit在您之前的选项卡上不受支持。尽管如此，您可以在此开始录制，然后切换到选项卡，但您的摄像头和工具栏将不可见。",
     "description": "选项卡上不支持扩展的说明"
   },
   "backupsDescription1": {
@@ -1304,7 +1304,7 @@
     "description": "Button label to go to the dashboard in the popup"
   },
   "welcomePopupTitle": {
-    "message": "欢迎使用 Screenity",
+    "message": "欢迎使用 Screeedit",
     "description": "Title for the welcome popup shown to new users"
   },
   "welcomePopupDescriptionTop": {
@@ -1512,7 +1512,7 @@
     "description": "在编辑器中自托管横幅描述"
   },
   "welcomeBackPopupTitle": {
-    "message": "欢迎回到 Screenity",
+    "message": "欢迎回到 Screeedit",
     "description": "返回用户欢迎弹窗的标题"
   },
   "welcomeBackProTitle": {
@@ -1692,7 +1692,7 @@
     "description": "Toast shown before the screen picker reopens because system audio could not start and capture is retrying without it"
   },
   "editorRecoveryToast": {
-    "message": "录制内容已保存。编辑器未打开，请点击 Screenity 图标重试。",
+    "message": "录制内容已保存。编辑器未打开，请点击 Screeedit 图标重试。",
     "description": "Toast shown on the active tab when the post-recording editor tab fails to open"
   },
   "stopAckTimeoutToast": {
@@ -1735,7 +1735,7 @@
     "message": "正在准备您的录制…"
   },
   "editorStuckDescription": {
-    "message": "Screenity 加载录制的时间比平时更长。您的数据可能仍保存在此设备上。请尝试恢复，如果仍无法加载，请与我们联系。"
+    "message": "Screeedit 加载录制的时间比平时更长。您的数据可能仍保存在此设备上。请尝试恢复，如果仍无法加载，请与我们联系。"
   },
   "editorStuckTryRecover": {
     "message": "尝试恢复"
@@ -1885,7 +1885,7 @@
     "description": "Modal title when Google Drive authentication expired or was revoked"
   },
   "driveAuthModalDescription": {
-    "message": "Google 不允许 Screenity 登录。请换一个 Google 账号再试，或改为下载视频。学校和工作账号可能会阻止此操作。",
+    "message": "Google 不允许 Screeedit 登录。请换一个 Google 账号再试，或改为下载视频。学校和工作账号可能会阻止此操作。",
     "description": "Modal description when Google Drive authentication expired or was revoked"
   },
   "emptyRecordingTitle": {

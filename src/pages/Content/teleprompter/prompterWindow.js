@@ -92,7 +92,7 @@ export const openPipLayer = async (layer, reason) => {
 
   try {
     const doc = win.document;
-    doc.title = "Screenity";
+    doc.title = "Screeedit";
     doc.documentElement.lang = chrome.i18n.getUILanguage();
     doc.documentElement.style.height = "100%";
     Object.assign(doc.body.style, {

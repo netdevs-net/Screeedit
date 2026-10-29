@@ -53,7 +53,7 @@ const Download = () => {
     out = out.replace(/[\x00-\x1f\x7f]/g, "_");
     out = out.replace(/\s+/g, " ").trim();
     out = out.replace(/[. ]+$/g, "");
-    if (!out) out = "Screenity recording";
+    if (!out) out = "Screeedit recording";
     if (out.length > 200) out = out.slice(0, 200).trim();
     return out;
   };

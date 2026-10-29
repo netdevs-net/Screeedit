@@ -93,7 +93,7 @@ export const TEXT_PRESETS = {
   },
   credits: {
     name: "Scrolling credits",
-    text: "Thanks for watching\n\nMade with ScreeEdit",
+    text: "Thanks for watching\n\nMade with Screeedit",
     fontSize: 0.04,
     fontFamily: "Satoshi-Medium",
     fill: "#FFFFFF",

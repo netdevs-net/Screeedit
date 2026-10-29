@@ -120,7 +120,7 @@ const startMediaSession = (state) => {
     if (typeof navigator === "undefined" || !navigator.mediaSession) return;
     if (typeof window.MediaMetadata === "function") {
       navigator.mediaSession.metadata = new window.MediaMetadata({
-        title: "Screenity recording",
+        title: "Screeedit recording",
         artist: "Screenity",
       });
     }
