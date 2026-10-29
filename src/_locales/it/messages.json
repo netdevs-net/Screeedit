@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Sembra che Screeedit non sia riuscito a caricare la registrazione dall'archiviazione del dispositivo. Potrebbe essere stata cancellata o spostata. Se il problema persiste, contattaci a support@screenity.io.",
+    "message": "Sembra che Screeedit non sia riuscito a caricare la registrazione dall'archiviazione del dispositivo. Potrebbe essere stata cancellata o spostata.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -872,7 +872,7 @@
     "description": "Titolo del modalità di errore di streaming"
   },
   "streamErrorModalDescription": {
-    "message": "Si è verificato un errore durante l'avvio della registrazione. Riavvia il tuo browser e riprova. Se il problema persiste, contattaci all'indirizzo support@screenity.io.",
+    "message": "Si è verificato un errore durante l'avvio della registrazione. Riavvia il tuo browser e riprova.",
     "description": "Descrizione del modalità di errore di streaming"
   },
   "accountErrorModalTitle": {
@@ -996,7 +996,7 @@
     "description": "Titolo del modulo di risoluzione dei problemi"
   },
   "troubleshootModalDescription": {
-    "message": "Dopo il download, invia il file a support@screenity.io con qualsiasi informazione pertinente. Utilizzeremo questi dati per aiutarti a risolvere eventuali problemi che riscontri con l'estensione e, se possibile, recuperare il tuo video.",
+    "message": "Utilizzeremo questi dati per aiutarti a risolvere eventuali problemi che riscontri con l'estensione e, se possibile, recuperare il tuo video.",
     "description": "Descrizione del modulo di risoluzione dei problemi"
   },
   "troubleshootModalButton": {
@@ -1746,7 +1746,7 @@
     "message": "Impossibile avviare la registrazione"
   },
   "recordingFailedModalDescription": {
-    "message": "Qualcosa ha impedito l'avvio della registrazione. Riprova. Se continua a succedere, scrivici a support@screenity.io."
+    "message": "Qualcosa ha impedito l'avvio della registrazione. Riprova."
   },
   "editAudioTooLargeTitle": {
     "message": "Il file audio è troppo grande"

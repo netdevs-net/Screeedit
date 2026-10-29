@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Görünüşe göre Screeedit kaydı cihazınızın deposundan yükleyemedi. Silinmiş veya taşınmış olabilir. Bu sorun devam ederse, lütfen support@screenity.io adresinden bizimle iletişime geçin.",
+    "message": "Görünüşe göre Screeedit kaydı cihazınızın deposundan yükleyemedi. Silinmiş veya taşınmış olabilir.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -872,7 +872,7 @@
     "description": "Akış hatası modal başlığı"
   },
   "streamErrorModalDescription": {
-    "message": "Kaydın başlatılmasında bir hata oluştu gibi görünüyor. Tarayıcınızı yeniden başlatın ve tekrar deneyin. Sorun devam ederse, lütfen support@screenity.io adresinden bize ulaşın.",
+    "message": "Kaydın başlatılmasında bir hata oluştu gibi görünüyor. Tarayıcınızı yeniden başlatın ve tekrar deneyin.",
     "description": "Akış hatası modal açıklaması"
   },
   "accountErrorModalTitle": {
@@ -996,7 +996,7 @@
     "description": "Sorun giderme modal başlığı"
   },
   "troubleshootModalDescription": {
-    "message": "İndirdikten sonra dosyayı support@screenity.io adresine gönderin ve ilgili bilgileri ekleyin. Bu verileri, uzantı ile ilgili yaşadığınız sorunları çözmek ve mümkünse videonuzu kurtarmak için kullanacağız.",
+    "message": "Bu verileri, uzantı ile ilgili yaşadığınız sorunları çözmek ve mümkünse videonuzu kurtarmak için kullanacağız.",
     "description": "Sorun giderme modal açıklaması"
   },
   "troubleshootModalButton": {
@@ -1766,7 +1766,7 @@
     "message": "Kayıt başlatılamadı"
   },
   "recordingFailedModalDescription": {
-    "message": "Bir şey kaydın başlamasını engelledi. Lütfen tekrar deneyin. Sorun devam ederse support@screenity.io adresinden bize ulaşın."
+    "message": "Bir şey kaydın başlamasını engelledi. Lütfen tekrar deneyin."
   },
   "editAudioTooLargeTitle": {
     "message": "Ses dosyası çok büyük"

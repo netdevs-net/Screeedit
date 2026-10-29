@@ -277,7 +277,7 @@ export const buildDiagnosticZip = async ({
     files["upload-telemetry.json"] = JSON.stringify(redactPii(uploadTelemetry));
   }
 
-  const filename = `screenity-diagnostics-${ts}.zip`;
+  const filename = `screeedit-diagnostics-${ts}.zip`;
 
   const resp = await chrome.runtime.sendMessage({
     type: "make-zip",

@@ -19,6 +19,9 @@ import { ContentStateContext } from "../../context/ContentState";
 
 // Chrome can keep serving an unpacked extension's old _locales after a
 // reload, so strings added since come back empty. Fall back to English.
+// The upgrade/pricing links lead to Screenity's paid plan.
+const IS_CLOUD_BUILD = process.env.SCREENITY_ENABLE_CLOUD_FEATURES === "true";
+
 const msg = (key, fallback) => chrome.i18n.getMessage(key) || fallback;
 
 const RightPanel = () => {
@@ -685,7 +688,7 @@ const RightPanel = () => {
                       : chrome.i18n.getMessage("videoProcessingLabelDescription")}
                   </div>
                 </div>
-                {!contentState.isFfmpegRunning && (
+                {!contentState.isFfmpegRunning && IS_CLOUD_BUILD && (
                 <div
                   className={styles.buttonRight}
                   onClick={() => {

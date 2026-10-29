@@ -3303,7 +3303,7 @@ export const setupHandlers = () => {
       const filename =
         (message && typeof message.filename === "string"
           ? message.filename
-          : null) || "screenity-bundle.zip";
+          : null) || "screeedit-bundle.zip";
       const zip = new JSZip();
       for (const [name, content] of Object.entries(files)) {
         if (typeof content === "string") {

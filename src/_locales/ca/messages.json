@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Sembla que Screeedit no ha pogut carregar la gravació de l'emmagatzematge del teu dispositiu. És possible que s'hagi esborrat o mogut. Si això continua passant, contacta amb nosaltres a support@screenity.io.",
+    "message": "Sembla que Screeedit no ha pogut carregar la gravació de l'emmagatzematge del teu dispositiu. És possible que s'hagi esborrat o mogut.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -872,7 +872,7 @@
     "description": "Títol del modal d'error de transmissió"
   },
   "streamErrorModalDescription": {
-    "message": "Hi ha hagut un error en iniciar la gravació. Reinicia el teu navegador i torna-ho a provar. Si el problema persisteix, si us plau, posa't en contacte amb nosaltres a support@screenity.io.",
+    "message": "Hi ha hagut un error en iniciar la gravació. Reinicia el teu navegador i torna-ho a provar.",
     "description": "Descripció del modal d'error de transmissió"
   },
   "accountErrorModalTitle": {
@@ -996,7 +996,7 @@
     "description": "Títol del modal de solució de problemes"
   },
   "troubleshootModalDescription": {
-    "message": "Després de la descàrrega, envia l'arxiu a support@screenity.io amb qualsevol informació rellevant. Farem servir aquestes dades per ajudar-te a solucionar qualsevol problema que tinguis amb l'extensió i, si és possible, recuperar el teu vídeo.",
+    "message": "Farem servir aquestes dades per ajudar-te a solucionar qualsevol problema que tinguis amb l'extensió i, si és possible, recuperar el teu vídeo.",
     "description": "Descripció del modal de solució de problemes"
   },
   "troubleshootModalButton": {
@@ -1766,7 +1766,7 @@
     "message": "No s'ha pogut iniciar la gravació"
   },
   "recordingFailedModalDescription": {
-    "message": "Alguna cosa ha impedit que la gravació s'iniciés. Torna-ho a provar. Si segueix passant, escriu-nos a support@screenity.io."
+    "message": "Alguna cosa ha impedit que la gravació s'iniciés. Torna-ho a provar."
   },
   "editAudioTooLargeTitle": {
     "message": "El fitxer d'àudio és massa gran"

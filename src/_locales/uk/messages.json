@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Схоже, Screeedit не зміг завантажити запис зі сховища вашого пристрою. Можливо, його було очищено або переміщено. Якщо це повторюється, зв'яжіться з нами за адресою support@screenity.io.",
+    "message": "Схоже, Screeedit не зміг завантажити запис зі сховища вашого пристрою. Можливо, його було очищено або переміщено.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -872,7 +872,7 @@
     "description": "Заголовок модального вікна помилки потоку"
   },
   "streamErrorModalDescription": {
-    "message": "Схоже, що виникла помилка при запуску запису. Перезапустіть свій браузер і спробуйте ще раз. Якщо проблема не зникає, будь ласка, зв'яжіться з нами за адресою support@screenity.io.",
+    "message": "Схоже, що виникла помилка при запуску запису. Перезапустіть свій браузер і спробуйте ще раз.",
     "description": "Опис модального вікна помилки потоку"
   },
   "accountErrorModalTitle": {
@@ -996,7 +996,7 @@
     "description": "Заголовок модального вікна усунення неполадок"
   },
   "troubleshootModalDescription": {
-    "message": "Після завантаження надішліть файл на адресу support@screenity.io з будь-якою відповідною інформацією. Ми використовуватимемо ці дані для вирішення будь-яких проблем, які у вас виникли з розширенням, і можливо, відновлення вашого відео.",
+    "message": "Ми використовуватимемо ці дані для вирішення будь-яких проблем, які у вас виникли з розширенням, і можливо, відновлення вашого відео.",
     "description": "Опис модального вікна усунення неполадок"
   },
   "troubleshootModalButton": {
@@ -1758,7 +1758,7 @@
     "message": "Не вдалося розпочати запис"
   },
   "recordingFailedModalDescription": {
-    "message": "Щось завадило розпочати запис. Будь ласка, спробуйте ще раз. Якщо це повторюється, напишіть нам на support@screenity.io."
+    "message": "Щось завадило розпочати запис. Будь ласка, спробуйте ще раз."
   },
   "editAudioTooLargeTitle": {
     "message": "Аудіофайл завеликий"

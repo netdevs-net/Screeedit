@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Sepertinya Screeedit tidak dapat memuat rekaman dari penyimpanan perangkat Anda. Rekaman mungkin telah dihapus atau dipindahkan. Jika ini terus terjadi, hubungi kami di support@screenity.io.",
+    "message": "Sepertinya Screeedit tidak dapat memuat rekaman dari penyimpanan perangkat Anda. Rekaman mungkin telah dihapus atau dipindahkan.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -872,7 +872,7 @@
     "description": "Judul modal kesalahan stream"
   },
   "streamErrorModalDescription": {
-    "message": "Sepertinya ada kesalahan saat memulai perekaman. Restart browser Anda dan coba lagi. Jika masalah masih berlanjut, silakan hubungi kami di support@screenity.io.",
+    "message": "Sepertinya ada kesalahan saat memulai perekaman. Restart browser Anda dan coba lagi.",
     "description": "Deskripsi modal kesalahan stream"
   },
   "accountErrorModalTitle": {
@@ -996,7 +996,7 @@
     "description": "Judul modal Penyelesaian Masalah"
   },
   "troubleshootModalDescription": {
-    "message": "Setelah mengunduh, kirim berkas ini ke support@screenity.io dengan informasi relevan. Kami akan menggunakan data ini untuk membantu Anda menyelesaikan masalah dengan ekstensi dan memulihkan video Anda jika memungkinkan.",
+    "message": "Kami akan menggunakan data ini untuk membantu Anda menyelesaikan masalah dengan ekstensi dan memulihkan video Anda jika memungkinkan.",
     "description": "Deskripsi modal Penyelesaian Masalah"
   },
   "troubleshootModalButton": {
@@ -1766,7 +1766,7 @@
     "message": "Rekaman tidak dapat dimulai"
   },
   "recordingFailedModalDescription": {
-    "message": "Sesuatu menghalangi rekaman untuk dimulai. Silakan coba lagi. Jika hal ini terus terjadi, hubungi kami di support@screenity.io."
+    "message": "Sesuatu menghalangi rekaman untuk dimulai. Silakan coba lagi."
   },
   "editAudioTooLargeTitle": {
     "message": "File audio terlalu besar"

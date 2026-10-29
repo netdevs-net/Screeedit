@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Screeedit konnte die Aufnahme aus dem Speicher deines Geräts nicht laden. Sie wurde möglicherweise gelöscht oder verschoben. Falls dies weiterhin geschieht, kontaktiere uns unter support@screenity.io.",
+    "message": "Screeedit konnte die Aufnahme aus dem Speicher deines Geräts nicht laden. Sie wurde möglicherweise gelöscht oder verschoben.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -872,7 +872,7 @@
     "description": "Titel des Stream-Fehlermodals"
   },
   "streamErrorModalDescription": {
-    "message": "Es sieht so aus, als ob beim Starten der Aufnahme ein Fehler aufgetreten ist. Starten Sie Ihren Browser neu und versuchen Sie es erneut. Wenn das Problem weiterhin besteht, kontaktieren Sie uns bitte unter support@screenity.io.",
+    "message": "Es sieht so aus, als ob beim Starten der Aufnahme ein Fehler aufgetreten ist. Starten Sie Ihren Browser neu und versuchen Sie es erneut.",
     "description": "Beschreibung des Stream-Fehlermodals"
   },
   "accountErrorModalTitle": {
@@ -996,7 +996,7 @@
     "description": "Titel des Modals zur Problembehandlung"
   },
   "troubleshootModalDescription": {
-    "message": "Nach dem Herunterladen senden Sie die Datei an support@screenity.io mit allen relevanten Informationen. Wir verwenden diese Daten, um Ihnen bei der Fehlerbehebung von Problemen mit der Erweiterung zu helfen und Ihr Video gegebenenfalls wiederherzustellen.",
+    "message": "Wir verwenden diese Daten, um Ihnen bei der Fehlerbehebung von Problemen mit der Erweiterung zu helfen und Ihr Video gegebenenfalls wiederherzustellen.",
     "description": "Beschreibung des Modals zur Problembehandlung"
   },
   "troubleshootModalButton": {
@@ -1766,7 +1766,7 @@
     "message": "Aufnahme konnte nicht gestartet werden"
   },
   "recordingFailedModalDescription": {
-    "message": "Etwas hat den Start der Aufnahme verhindert. Bitte versuchen Sie es erneut. Wenn das Problem weiterhin besteht, kontaktieren Sie uns unter support@screenity.io."
+    "message": "Etwas hat den Start der Aufnahme verhindert. Bitte versuchen Sie es erneut."
   },
   "editAudioTooLargeTitle": {
     "message": "Audiodatei ist zu groß"
