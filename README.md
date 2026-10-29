@@ -1,5 +1,8 @@
 <p align="center">
-  <img src=".github/readme/logo.svg" alt="Screeedit" height="44">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/readme/logo-dark.svg">
+    <img src=".github/readme/logo.svg" alt="Screeedit" height="44">
+  </picture>
 </p>
 
 <h3 align="center">Record your screen. Edit it like a pro. Never upload a thing.</h3>
