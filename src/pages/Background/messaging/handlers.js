@@ -1893,7 +1893,7 @@ export const setupHandlers = () => {
     ),
   );
   registerMessage("open-home", () =>
-    createTab("https://screenity.io/", true),
+    createTab("https://github.com/netdevs-net", true),
   );
   registerMessage("report-bug", async (message) => {
     const qs = await supportContextQuery({
@@ -2251,7 +2251,10 @@ export const setupHandlers = () => {
   });
 
   registerMessage("click-event", async ({ payload }, sender) => {
-    if (!CLOUD_FEATURES_ENABLED) return;
+    if (!CLOUD_FEATURES_ENABLED) {
+      storeLocalClick(payload);
+      return;
+    }
     const { x, y, surface, region, isTab } = payload;
     const senderWindowId = sender.tab?.windowId;
 
@@ -2357,6 +2360,59 @@ export const setupHandlers = () => {
         }
       });
     return _clickWriteQueue;
+  }
+
+  // Local recordings: keep clicks as video time + position as a fraction of the
+  // recorded frame, so the editor can zoom on them. Video time comes from the
+  // same start/pause bookkeeping stopRecording uses for the duration.
+  async function storeLocalClick(payload) {
+    const {
+      recordingStartTime,
+      totalPausedMs,
+      paused,
+      fastRecorderActiveRecordingId,
+    } = await chrome.storage.local.get([
+      "recordingStartTime",
+      "totalPausedMs",
+      "paused",
+      "fastRecorderActiveRecordingId",
+    ]);
+    const start = Number(recordingStartTime);
+    if (paused || !Number.isFinite(start) || start <= 0) return;
+    const t = (Date.now() - start - (Number(totalPausedMs) || 0)) / 1000;
+    if (t < 0) return;
+
+    const { x, y, recordingType, viewportWidth, viewportHeight, screenX, screenY } =
+      payload;
+    const click = { t, rid: fastRecorderActiveRecordingId || null };
+
+    // Tab and region recordings capture exactly the page viewport (or region).
+    if (recordingType === "tab" || recordingType === "region" || payload.region) {
+      if (!viewportWidth || !viewportHeight) return;
+      storeClick({ ...click, nx: x / viewportWidth, ny: y / viewportHeight });
+      return;
+    }
+
+    // Full-screen recordings: place the click on the monitor that holds the
+    // window. Window recordings can't be mapped reliably, so they're skipped.
+    if (payload.surface === "monitor" && typeof screenX === "number") {
+      chrome.system.display.getInfo((displays) => {
+        const d =
+          displays.find(
+            (m) =>
+              screenX >= m.bounds.left &&
+              screenX < m.bounds.left + m.bounds.width &&
+              screenY >= m.bounds.top &&
+              screenY < m.bounds.top + m.bounds.height,
+          ) || displays.find((m) => m.isPrimary);
+        if (!d) return;
+        storeClick({
+          ...click,
+          nx: (screenX - d.bounds.left) / d.bounds.width,
+          ny: (screenY - d.bounds.top) / d.bounds.height,
+        });
+      });
+    }
   }
 
   function storeClick(click) {
@@ -3247,7 +3303,7 @@ export const setupHandlers = () => {
       const filename =
         (message && typeof message.filename === "string"
           ? message.filename
-          : null) || "screenity-bundle.zip";
+          : null) || "screeedit-bundle.zip";
       const zip = new JSZip();
       for (const [name, content] of Object.entries(files)) {
         if (typeof content === "string") {

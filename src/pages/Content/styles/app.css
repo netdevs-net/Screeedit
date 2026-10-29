@@ -4782,3 +4782,21 @@ button {
 .driver-popover.ScreenityOnboardingPopover {
   z-index: 2147483647 !important;
 }
+
+/* Local build: shown in place of the cloud video library. */
+.LocalVideosNote {
+  padding: 28px 20px;
+  text-align: center;
+}
+.LocalVideosNoteTitle {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-size: 15px;
+  color: #29292f;
+  margin-bottom: 8px;
+}
+.LocalVideosNoteText {
+  font-family: "Satoshi-Medium", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #6e7684;
+}

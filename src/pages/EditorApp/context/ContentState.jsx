@@ -296,6 +296,18 @@ const ContentState = (props) => {
     redoDisabled: true,
     duration: 0,
     mode: "player",
+    annotating: false,
+    fromAnnotate: false,
+    // Timeline overlays: the editable doc, the blob they were drawn over, and
+    // the blob burning them produced (so re-opening the mode can re-edit).
+    overlayDoc: null,
+    overlayBaseBlob: null,
+    overlayBurnedBlob: null,
+    // Scenes: the project, its source blobs (id -> Blob) and the blob the
+    // last render produced (so re-opening the mode keeps editing the project).
+    scenesProject: null,
+    scenesSources: null,
+    scenesBurnedBlob: null,
     ffmpegLoaded: false,
     frame: null,
     pendingCropEntry: false,
@@ -719,7 +731,7 @@ const ContentState = (props) => {
         minute: "2-digit",
         hour12: true,
       });
-      const fallbackTitle = `Screenity video - ${formattedDate}`;
+      const fallbackTitle = `Screeedit video - ${formattedDate}`;
 
       try {
         const { recordingMeta } = await chrome.storage.local.get([
@@ -815,6 +827,7 @@ const ContentState = (props) => {
     muting: false,
     cropping: false,
     reencoding: false,
+    annotating: false,
   };
 
   const undo = useCallback(() => {
@@ -2275,6 +2288,8 @@ const ContentState = (props) => {
 
           ...(prev.fromCropper && { mode: "player", fromCropper: false }),
           ...(prev.fromAudio && { mode: "player", fromAudio: false }),
+          ...(prev.fromAnnotate && { mode: "player", fromAnnotate: false }),
+          annotating: false,
         };
       });
 
@@ -2399,10 +2414,14 @@ const ContentState = (props) => {
 
       // fall back to webm/rawBlob even if conversion fails
       setContentState((prev) => {
-        const wasEditing = prev.isFfmpegRunning && (prev.cutting || prev.trimming || prev.muting || prev.cropping || prev.reencoding);
+        const wasEditing = prev.isFfmpegRunning && (prev.cutting || prev.trimming || prev.muting || prev.cropping || prev.reencoding || prev.annotating);
         return {
           ...prev,
-          noffmpeg: true,
+          // A failed edit op leaves the source blob intact, so keep editing
+          // available; only a load/conversion failure disables the editor.
+          noffmpeg: wasEditing ? prev.noffmpeg : true,
+          annotating: false,
+          fromAnnotate: false,
           ffmpegLoaded: true,
           isFfmpegRunning: false,
           muting: false,
@@ -2687,6 +2706,7 @@ const ContentState = (props) => {
     setContentState((prev) => ({
       ...prev,
       isFfmpegRunning: false,
+      annotating: false,
       muting: false,
       cutting: false,
       trimming: false,
@@ -2871,6 +2891,59 @@ const ContentState = (props) => {
     return true;
   };
 
+  // Burns the timeline overlays (text, drawings, shapes) into the video.
+  const handleAnnotate = async (overlayDoc, sourceBlob) => {
+    if (contentState.isFfmpegRunning) return false;
+    if (
+      contentState.duration > contentState.editLimit &&
+      !contentState.override
+    ) {
+      setContentState((prev) => ({ ...prev, editErrorType: "too-long" }));
+      return false;
+    }
+
+    const opId = beginEditOp();
+
+    setContentState((prev) => ({
+      ...prev,
+      annotating: true,
+      isFfmpegRunning: true,
+      processingProgress: 0,
+      editErrorType: null,
+    }));
+
+    sendMessage({
+      type: "annotate-video",
+      blob: sourceBlob || contentState.blob,
+      overlayDoc,
+      topLevel: false,
+      _opId: opId,
+    });
+
+    return true;
+  };
+
+  // Renders a multi-scene project into a single video.
+  const handleRenderScenes = async (project, sources) => {
+    if (contentState.isFfmpegRunning) return false;
+    const opId = beginEditOp();
+    setContentState((prev) => ({
+      ...prev,
+      annotating: true,
+      isFfmpegRunning: true,
+      processingProgress: 0,
+      editErrorType: null,
+    }));
+    sendMessage({
+      type: "render-scenes",
+      project,
+      sources,
+      topLevel: false,
+      _opId: opId,
+    });
+    return true;
+  };
+
   const handleReencode = async (topLevel = false) => {
     if (contentState.isFfmpegRunning) return;
 
@@ -2903,7 +2976,7 @@ const ContentState = (props) => {
     out = out.replace(/\s+/g, " ").trim();
     out = out.replace(/[. ]+$/g, "");
 
-    if (!out) out = "Screenity recording";
+    if (!out) out = "Screeedit recording";
     if (out.length > maxLen) out = out.slice(0, maxLen).trim();
 
     return out;
@@ -2921,7 +2994,7 @@ const ContentState = (props) => {
       downloadError: null,
     }));
 
-    const rawTitle = contentStateRef.current.title || "Screenity recording";
+    const rawTitle = contentStateRef.current.title || "Screeedit recording";
 
     const base = sanitizeDownloadFilename(rawTitle);
     const filename = `${base}${ext}`;
@@ -3092,6 +3165,19 @@ const ContentState = (props) => {
       };
 
       chrome.downloads.onChanged.addListener(handler);
+      // A small blob download with no Save-As prompt can finish before the
+      // listener above is attached, so its "complete" event is never seen.
+      // Check the current state once and replay it through the handler.
+      chrome.downloads.search({ id: downloadId }, (items) => {
+        const state = items?.[0]?.state;
+        if (state === "complete" || state === "interrupted") {
+          handler({
+            id: downloadId,
+            state: { current: state },
+            error: items[0].error ? { current: items[0].error } : undefined,
+          });
+        }
+      });
     });
   };
 
@@ -3423,8 +3509,25 @@ const ContentState = (props) => {
         inputBytes,
         reason: String(err?.message || err).slice(0, 120),
       });
-      return { blob: null, path: null, audioCarried: null };
     }
+    // Offscreen document unavailable or failed: re-encode here instead, so
+    // "Download as .mp4" still gives an MP4 rather than the WebM source.
+    try {
+      const { default: convertWebmToMp4 } = await import(
+        "../../Editor/utils/convertWebmToMp4"
+      );
+      const out = await convertWebmToMp4(blob, sharedFinalizeProgress);
+      if (out?.size) {
+        return {
+          blob: new Blob([out], { type: "video/mp4" }),
+          path: "webm-transcode-inline",
+          audioCarried: true,
+        };
+      }
+    } catch (err) {
+      console.warn("[Screenity] in-editor webm->mp4 failed", err);
+    }
+    return { blob: null, path: null, audioCarried: null };
   };
 
   // Cache + dedupe the standard-MP4 finalize, keyed on the exact source blob so
@@ -3752,22 +3855,24 @@ const ContentState = (props) => {
         );
       }
       if (downloadCancelledRef.current) return;
-      const blobToSave = webmBlob || sourceBlob;
-      const ext = blobToSave.type === "video/webm" ? ".webm" : ".mp4";
-      try {
-        const url = URL.createObjectURL(blobToSave);
-        await requestDownload(url, ext);
-        URL.revokeObjectURL(url);
-      } catch (err) {
-        console.error("[Screenity] webm download failed", err);
+      // Only stop here with a real WebM. Otherwise fall through to the
+      // in-editor converter below rather than handing back the MP4.
+      if (webmBlob?.type === "video/webm") {
+        try {
+          const url = URL.createObjectURL(webmBlob);
+          await requestDownload(url, ".webm");
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          console.error("[Screenity] webm download failed", err);
+        }
+        setContentState((prevState) => ({
+          ...prevState,
+          downloadingWEBM: false,
+          isFfmpegRunning: false,
+          saved: true,
+        }));
+        return;
       }
-      setContentState((prevState) => ({
-        ...prevState,
-        downloadingWEBM: false,
-        isFfmpegRunning: false,
-        saved: true,
-      }));
-      return;
     }
 
     sendMessage({
@@ -3815,6 +3920,15 @@ const ContentState = (props) => {
       // Stalled or failed: deliver the source as-is so the user isn't stuck.
       // It's already a finalized, playable file; use its real extension.
       const ext = sourceBlob.type === "video/webm" ? ".webm" : ".mp4";
+      if (ext !== ".webm") {
+        try {
+          showEditorToast(
+            contentStateRef.current,
+            "Couldn't convert to WebM, so the video was saved as MP4 instead.",
+            6000,
+          );
+        } catch {}
+      }
       try {
         const url = URL.createObjectURL(sourceBlob);
         await requestDownload(url, ext);
@@ -3882,6 +3996,8 @@ const ContentState = (props) => {
   contentState.download = download;
   contentState.cancelDownload = cancelDownload;
   contentState.handleCrop = handleCrop;
+  contentState.handleAnnotate = handleAnnotate;
+  contentState.handleRenderScenes = handleRenderScenes;
   contentState.handleReencode = handleReencode;
   contentState.getFrame = getImage;
   contentState.downloadGIF = downloadGIF;

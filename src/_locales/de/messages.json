@@ -44,7 +44,7 @@
     "description": "Review prompt dismiss button on the unhappy branch"
   },
   "extName": {
-    "message": "Screenity - Bildschirmaufnahme & Beschriftung",
+    "message": "Screeedit - Bildschirmaufnahme & Beschriftung",
     "description": "Erweiterungsname"
   },
   "extDesc": {
@@ -92,7 +92,7 @@
     "description": "Titel des Modals für Kamera- / Mikrofonberechtigungen"
   },
   "permissionsModalDescription": {
-    "message": "Es scheint, dass Screenity keinen Zugriff auf Ihre Kamera oder Ihr Mikrofon hat. Stellen Sie sicher, dass Sie den Zugriff zulassen, indem Sie auf das Kamera-Symbol in der Adressleiste klicken.",
+    "message": "Es scheint, dass Screeedit keinen Zugriff auf Ihre Kamera oder Ihr Mikrofon hat. Stellen Sie sicher, dass Sie den Zugriff zulassen, indem Sie auf das Kamera-Symbol in der Adressleiste klicken.",
     "description": "Beschreibung des Modals für Kamera- / Mikrofonberechtigungen"
   },
   "permissionsModalDismiss": {
@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Screenity konnte die Aufnahme aus dem Speicher deines Geräts nicht laden. Sie wurde möglicherweise gelöscht oder verschoben. Falls dies weiterhin geschieht, kontaktiere uns unter support@screenity.io.",
+    "message": "Screeedit konnte die Aufnahme aus dem Speicher deines Geräts nicht laden. Sie wurde möglicherweise gelöscht oder verschoben.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -740,11 +740,11 @@
     "description": "Titel des Pop-ups 'Aufnahme pausiert'"
   },
   "chromePermissionsModalTitle": {
-    "message": "Screenity hat keine Berechtigung zur Bildschirmaufnahme",
+    "message": "Screeedit hat keine Berechtigung zur Bildschirmaufnahme",
     "description": "Titel des Berechtigungspop-ups"
   },
   "chromePermissionsModalDescription": {
-    "message": "Um die Bildschirmaufnahme zu aktivieren, müssen Sie Screenity die Berechtigung zum Erfassen Ihres Bildschirms erteilen, wenn Sie dazu aufgefordert werden.",
+    "message": "Um die Bildschirmaufnahme zu aktivieren, müssen Sie Screeedit die Berechtigung zum Erfassen Ihres Bildschirms erteilen, wenn Sie dazu aufgefordert werden.",
     "description": "Beschreibung des Berechtigungspop-ups"
   },
   "chromePermissionsModalAction": {
@@ -772,7 +772,7 @@
     "description": "Abbrechen der Mikrofon-Stummschaltungsmodalität"
   },
   "setupTitle": {
-    "message": "So starten Sie mit Screenity in drei einfachen Schritten:",
+    "message": "So starten Sie mit Screeedit in drei einfachen Schritten:",
     "description": "Titel der Einrichtungsschritte"
   },
   "setupStep1Before": {
@@ -796,7 +796,7 @@
     "description": "Einrichtungsschritt 3, vor dem Symbol. Es benötigt ein Leerzeichen am Ende."
   },
   "setupStep3After": {
-    "message": " Screenity-Symbol, um zu starten",
+    "message": " Screeedit-Symbol, um zu starten",
     "description": "Einrichtungsschritt 3, nach dem Symbol. Es benötigt ein Leerzeichen am Anfang."
   },
   "setupCompleteTitle": {
@@ -852,7 +852,7 @@
     "description": "Schaltfläche 'Aufnahme beenden' im Aufnahmescreen"
   },
   "updateAnnouncementTitle": {
-    "message": "Willkommen beim neuen Screenity!",
+    "message": "Willkommen beim neuen Screeedit!",
     "description": "Titel der Update-Ankündigung für bestehende Benutzer"
   },
   "updateAnnouncementDescription": {
@@ -872,7 +872,7 @@
     "description": "Titel des Stream-Fehlermodals"
   },
   "streamErrorModalDescription": {
-    "message": "Es sieht so aus, als ob beim Starten der Aufnahme ein Fehler aufgetreten ist. Starten Sie Ihren Browser neu und versuchen Sie es erneut. Wenn das Problem weiterhin besteht, kontaktieren Sie uns bitte unter support@screenity.io.",
+    "message": "Es sieht so aus, als ob beim Starten der Aufnahme ein Fehler aufgetreten ist. Starten Sie Ihren Browser neu und versuchen Sie es erneut.",
     "description": "Beschreibung des Stream-Fehlermodals"
   },
   "accountErrorModalTitle": {
@@ -952,7 +952,7 @@
     "description": "Titel für nicht genügend Speicherplatz"
   },
   "notEnoughSpaceDescription": {
-    "message": "Screenity benötigt mindestens 1 GB freien Speicherplatz für die Aufnahme. Bitte schaffen Sie Speicherplatz frei und versuchen Sie es erneut.",
+    "message": "Screeedit benötigt mindestens 1 GB freien Speicherplatz für die Aufnahme. Bitte schaffen Sie Speicherplatz frei und versuchen Sie es erneut.",
     "description": "Beschreibung für nicht genügend Speicherplatz"
   },
   "clearSpaceButton": {
@@ -984,7 +984,7 @@
     "description": "Titel des Modals für das Rohvideo"
   },
   "rawRecordingModalDescription": {
-    "message": "Das Rohvideo ist das Originalvideo, das von Screenity aufgenommen wurde. Dieses Video wurde nicht bearbeitet oder verändert und kann daher sehr groß sein und auf allen Geräten möglicherweise nicht abspielbar sein. Wenn Sie Probleme mit dem bearbeiteten Video haben, können Sie diese Datei verwenden, um Ihr Video wiederherzustellen.",
+    "message": "Das Rohvideo ist das Originalvideo, das von Screeedit aufgenommen wurde. Dieses Video wurde nicht bearbeitet oder verändert und kann daher sehr groß sein und auf allen Geräten möglicherweise nicht abspielbar sein. Wenn Sie Probleme mit dem bearbeiteten Video haben, können Sie diese Datei verwenden, um Ihr Video wiederherzustellen.",
     "description": "Beschreibung des Modals für das Rohvideo"
   },
   "rawRecordingModalButton": {
@@ -996,7 +996,7 @@
     "description": "Titel des Modals zur Problembehandlung"
   },
   "troubleshootModalDescription": {
-    "message": "Nach dem Herunterladen senden Sie die Datei an support@screenity.io mit allen relevanten Informationen. Wir verwenden diese Daten, um Ihnen bei der Fehlerbehebung von Problemen mit der Erweiterung zu helfen und Ihr Video gegebenenfalls wiederherzustellen.",
+    "message": "Wir verwenden diese Daten, um Ihnen bei der Fehlerbehebung von Problemen mit der Erweiterung zu helfen und Ihr Video gegebenenfalls wiederherzustellen.",
     "description": "Beschreibung des Modals zur Problembehandlung"
   },
   "troubleshootModalButton": {
@@ -1008,11 +1008,11 @@
     "description": "Titel des Modals für die 5-Minuten-Limitierung"
   },
   "overLimitModalDescription": {
-    "message": "Da Screenity komplett privat ist und lokal ausgeführt wird, ist es von der Hardware Ihres Geräts begrenzt. Die Verarbeitung eines Videos dieser Länge würde zu lange dauern und sehr ressourcenintensiv sein. Keine Sorge, Sie können immer noch die WEBM-Datei oder die Rohaufnahme herunterladen, aber Bearbeitung und MP4-Export sind nicht verfügbar. Sie können das Video dennoch versuchen zu verarbeiten, wenn Sie die Risiken verstehen.",
+    "message": "Da Screeedit komplett privat ist und lokal ausgeführt wird, ist es von der Hardware Ihres Geräts begrenzt. Die Verarbeitung eines Videos dieser Länge würde zu lange dauern und sehr ressourcenintensiv sein. Keine Sorge, Sie können immer noch die WEBM-Datei oder die Rohaufnahme herunterladen, aber Bearbeitung und MP4-Export sind nicht verfügbar. Sie können das Video dennoch versuchen zu verarbeiten, wenn Sie die Risiken verstehen.",
     "description": "Beschreibung des Modals für die 5-Minuten-Limitierung"
   },
   "overLimitModalDescriptionFastPath": {
-    "message": "Da Screenity komplett privat ist und lokal ausgeführt wird, ist es von der Hardware Ihres Geräts begrenzt. Die Verarbeitung eines Videos dieser Länge würde zu lange dauern und sehr ressourcenintensiv sein. Ihr MP4 ist bereit zum Herunterladen, aber die Bearbeitung im Browser ist für Clips dieser Länge nicht verfügbar. Sie können das Video dennoch versuchen zu verarbeiten, wenn Sie die Risiken verstehen.",
+    "message": "Da Screeedit komplett privat ist und lokal ausgeführt wird, ist es von der Hardware Ihres Geräts begrenzt. Die Verarbeitung eines Videos dieser Länge würde zu lange dauern und sehr ressourcenintensiv sein. Ihr MP4 ist bereit zum Herunterladen, aber die Bearbeitung im Browser ist für Clips dieser Länge nicht verfügbar. Sie können das Video dennoch versuchen zu verarbeiten, wenn Sie die Risiken verstehen.",
     "description": "Over 5 minutes limit modal description when the recording is a native MP4 (fast recorder / WebCodecs)"
   },
   "overLimitModalButton": {
@@ -1054,7 +1054,7 @@
     "description": "Titel der Erweiterung nicht auf Tab unterstützt"
   },
   "extensionNotSupportedDescription": {
-    "message": "Screenity wurde in Ihrem vorherigen Tab nicht unterstützt. Sie können Ihre Aufnahme hier dennoch starten und dann zum Tab wechseln, aber Ihre Kamera und Symbolleiste werden nicht sichtbar sein.",
+    "message": "Screeedit wurde in Ihrem vorherigen Tab nicht unterstützt. Sie können Ihre Aufnahme hier dennoch starten und dann zum Tab wechseln, aber Ihre Kamera und Symbolleiste werden nicht sichtbar sein.",
     "description": "Beschreibung der Erweiterung nicht auf Tab unterstützt"
   },
   "backupsDescription1": {
@@ -1308,7 +1308,7 @@
     "description": "Button label to go to the dashboard in the popup"
   },
   "welcomePopupTitle": {
-    "message": "Willkommen bei Screenity",
+    "message": "Willkommen bei Screeedit",
     "description": "Title for the welcome popup shown to new users"
   },
   "welcomePopupDescriptionTop": {
@@ -1516,7 +1516,7 @@
     "description": "Beschreibung des Banners für Self-Hosting im Editor"
   },
   "welcomeBackPopupTitle": {
-    "message": "Willkommen zurück bei Screenity",
+    "message": "Willkommen zurück bei Screeedit",
     "description": "Titel für das Begrüßungs-Popup für zurückkehrende Nutzer"
   },
   "welcomeBackProTitle": {
@@ -1696,7 +1696,7 @@
     "description": "Toast shown before the screen picker reopens because system audio could not start and capture is retrying without it"
   },
   "editorRecoveryToast": {
-    "message": "Aufnahme gespeichert. Der Editor konnte nicht geöffnet werden. Klicke auf das Screenity-Symbol, um es erneut zu versuchen.",
+    "message": "Aufnahme gespeichert. Der Editor konnte nicht geöffnet werden. Klicke auf das Screeedit-Symbol, um es erneut zu versuchen.",
     "description": "Toast shown on the active tab when the post-recording editor tab fails to open"
   },
   "stopAckTimeoutToast": {
@@ -1739,7 +1739,7 @@
     "message": "Ihre Aufnahme wird noch vorbereitet…"
   },
   "editorStuckDescription": {
-    "message": "Screenity benötigt länger als gewöhnlich, um Ihre Aufnahme zu laden. Ihre Daten befinden sich möglicherweise noch auf diesem Gerät. Versuchen Sie, sie wiederherzustellen, oder melden Sie sich, falls sie nicht zurückkommt."
+    "message": "Screeedit benötigt länger als gewöhnlich, um Ihre Aufnahme zu laden. Ihre Daten befinden sich möglicherweise noch auf diesem Gerät. Versuchen Sie, sie wiederherzustellen, oder melden Sie sich, falls sie nicht zurückkommt."
   },
   "editorStuckTryRecover": {
     "message": "Wiederherstellen"
@@ -1766,7 +1766,7 @@
     "message": "Aufnahme konnte nicht gestartet werden"
   },
   "recordingFailedModalDescription": {
-    "message": "Etwas hat den Start der Aufnahme verhindert. Bitte versuchen Sie es erneut. Wenn das Problem weiterhin besteht, kontaktieren Sie uns unter support@screenity.io."
+    "message": "Etwas hat den Start der Aufnahme verhindert. Bitte versuchen Sie es erneut."
   },
   "editAudioTooLargeTitle": {
     "message": "Audiodatei ist zu groß"
@@ -1886,7 +1886,7 @@
     "description": "Modal title when Google Drive authentication expired or was revoked"
   },
   "driveAuthModalDescription": {
-    "message": "Google hat die Anmeldung bei Screenity nicht zugelassen. Versuchen Sie es mit einem anderen Google-Konto oder laden Sie das Video stattdessen herunter. Schul- und Arbeitskonten können dies blockieren.",
+    "message": "Google hat die Anmeldung bei Screeedit nicht zugelassen. Versuchen Sie es mit einem anderen Google-Konto oder laden Sie das Video stattdessen herunter. Schul- und Arbeitskonten können dies blockieren.",
     "description": "Modal description when Google Drive authentication expired or was revoked"
   },
   "emptyRecordingTitle": {

@@ -44,7 +44,7 @@
     "description": "Review prompt dismiss button on the unhappy branch"
   },
   "extName": {
-    "message": "Screenity - Grava i Anota la Pantalla",
+    "message": "Screeedit - Grava i Anota la Pantalla",
     "description": "Nom de l'extensió"
   },
   "extDesc": {
@@ -92,7 +92,7 @@
     "description": "Títol del modal d'avís de permisos de càmera / micròfon"
   },
   "permissionsModalDescription": {
-    "message": "Screenity no pot accedir a la teva càmera o micròfon. Permet l'accés fent clic a l'ícona de la càmera a la barra d'adreces.",
+    "message": "Screeedit no pot accedir a la teva càmera o micròfon. Permet l'accés fent clic a l'ícona de la càmera a la barra d'adreces.",
     "description": "Descripció del modal d'avís de permisos de càmera / micròfon"
   },
   "permissionsModalDismiss": {
@@ -112,7 +112,7 @@
     "description": "Modal title shown when the editor cannot read the recording file from the device's storage"
   },
   "opfsLoadErrorDescription": {
-    "message": "Sembla que Screenity no ha pogut carregar la gravació de l'emmagatzematge del teu dispositiu. És possible que s'hagi esborrat o mogut. Si això continua passant, contacta amb nosaltres a support@screenity.io.",
+    "message": "Sembla que Screeedit no ha pogut carregar la gravació de l'emmagatzematge del teu dispositiu. És possible que s'hagi esborrat o mogut.",
     "description": "Modal description shown when the editor cannot read the recording file from the device's storage"
   },
   "recordingWriterFailedToast": {
@@ -740,11 +740,11 @@
     "description": "Títol del modal de gravació en pausa"
   },
   "chromePermissionsModalTitle": {
-    "message": "Screenity no té permís per gravar la pantalla",
+    "message": "Screeedit no té permís per gravar la pantalla",
     "description": "Títol del modal de permisos"
   },
   "chromePermissionsModalDescription": {
-    "message": "Per habilitar la gravació de pantalla, has de concedir permisos adicionals a Screenity.",
+    "message": "Per habilitar la gravació de pantalla, has de concedir permisos adicionals a Screeedit.",
     "description": "Descripció del modal de permisos"
   },
   "chromePermissionsModalAction": {
@@ -772,7 +772,7 @@
     "description": "Cancel·la del modal de micròfon apagat"
   },
   "setupTitle": {
-    "message": "Comença a utilitzar Screenity en tres passos senzills:",
+    "message": "Comença a utilitzar Screeedit en tres passos senzills:",
     "description": "Títol dels passos de configuració"
   },
   "setupStep1Before": {
@@ -796,7 +796,7 @@
     "description": "Pas 3 de configuració, abans de la icona. Necessita un espai al final."
   },
   "setupStep3After": {
-    "message": " Screenity per començar",
+    "message": " Screeedit per començar",
     "description": "Pas 3 de configuració, després de la icona. Necessita un espai al principi."
   },
   "setupCompleteTitle": {
@@ -852,7 +852,7 @@
     "description": "Stop recording button in recording screen"
   },
   "updateAnnouncementTitle": {
-    "message": "Benvingut al nou Screenity!",
+    "message": "Benvingut al nou Screeedit!",
     "description": "Títol de l'anunci d'actualització per als usuaris existents"
   },
   "updateAnnouncementDescription": {
@@ -872,7 +872,7 @@
     "description": "Títol del modal d'error de transmissió"
   },
   "streamErrorModalDescription": {
-    "message": "Hi ha hagut un error en iniciar la gravació. Reinicia el teu navegador i torna-ho a provar. Si el problema persisteix, si us plau, posa't en contacte amb nosaltres a support@screenity.io.",
+    "message": "Hi ha hagut un error en iniciar la gravació. Reinicia el teu navegador i torna-ho a provar.",
     "description": "Descripció del modal d'error de transmissió"
   },
   "accountErrorModalTitle": {
@@ -952,7 +952,7 @@
     "description": "Títol d'espai insuficient"
   },
   "notEnoughSpaceDescription": {
-    "message": "Screenity necessita almenys 1 GB d'espai lliure per a la gravació. Si us plau, allibera espai i torna-ho a intentar.",
+    "message": "Screeedit necessita almenys 1 GB d'espai lliure per a la gravació. Si us plau, allibera espai i torna-ho a intentar.",
     "description": "Descripció d'espai insuficient"
   },
   "clearSpaceButton": {
@@ -984,7 +984,7 @@
     "description": "Títol del modal de gravació en brut"
   },
   "rawRecordingModalDescription": {
-    "message": "L'arxiu de vídeo en brut és l'arxiu original enregistrat per Screenity. Aquest vídeo no ha estat processat ni editat, per la qual cosa pot ser molt gran i potser no es pot reproduir en tots els dispositius. Si tens problemes amb el vídeo processat, pots fer servir aquest arxiu per recuperar el teu vídeo.",
+    "message": "L'arxiu de vídeo en brut és l'arxiu original enregistrat per Screeedit. Aquest vídeo no ha estat processat ni editat, per la qual cosa pot ser molt gran i potser no es pot reproduir en tots els dispositius. Si tens problemes amb el vídeo processat, pots fer servir aquest arxiu per recuperar el teu vídeo.",
     "description": "Descripció del modal de gravació en brut"
   },
   "rawRecordingModalButton": {
@@ -996,7 +996,7 @@
     "description": "Títol del modal de solució de problemes"
   },
   "troubleshootModalDescription": {
-    "message": "Després de la descàrrega, envia l'arxiu a support@screenity.io amb qualsevol informació rellevant. Farem servir aquestes dades per ajudar-te a solucionar qualsevol problema que tinguis amb l'extensió i, si és possible, recuperar el teu vídeo.",
+    "message": "Farem servir aquestes dades per ajudar-te a solucionar qualsevol problema que tinguis amb l'extensió i, si és possible, recuperar el teu vídeo.",
     "description": "Descripció del modal de solució de problemes"
   },
   "troubleshootModalButton": {
@@ -1008,11 +1008,11 @@
     "description": "Títol del modal de límit superior a 5 minuts"
   },
   "overLimitModalDescription": {
-    "message": "Com que Screenity és completament privat i s'executa localment, està limitat pel maquinari del teu dispositiu. Processar un vídeo d'aquesta longitud trigarà massa temps i serà molt intensiu en recursos. No et preocupis, encara pots descarregar l'arxiu WEBM o la gravació en brut, però l'edició i l'exportació a MP4 no estan disponibles. Dicho això, encara pots intentar processar el vídeo de tota manera si entens els riscos.",
+    "message": "Com que Screeedit és completament privat i s'executa localment, està limitat pel maquinari del teu dispositiu. Processar un vídeo d'aquesta longitud trigarà massa temps i serà molt intensiu en recursos. No et preocupis, encara pots descarregar l'arxiu WEBM o la gravació en brut, però l'edició i l'exportació a MP4 no estan disponibles. Dicho això, encara pots intentar processar el vídeo de tota manera si entens els riscos.",
     "description": "Descripció del modal de límit superior a 5 minuts"
   },
   "overLimitModalDescriptionFastPath": {
-    "message": "Com que Screenity és completament privat i s'executa localment, està limitat pel maquinari del teu dispositiu. Processar un vídeo d'aquesta longitud trigarà massa temps i serà molt intensiu en recursos. El teu MP4 ja està llest per descarregar, però l'edició al navegador no està disponible per a clips tan llargs. Dicho això, encara pots intentar processar el vídeo de tota manera si entens els riscos.",
+    "message": "Com que Screeedit és completament privat i s'executa localment, està limitat pel maquinari del teu dispositiu. Processar un vídeo d'aquesta longitud trigarà massa temps i serà molt intensiu en recursos. El teu MP4 ja està llest per descarregar, però l'edició al navegador no està disponible per a clips tan llargs. Dicho això, encara pots intentar processar el vídeo de tota manera si entens els riscos.",
     "description": "Over 5 minutes limit modal description when the recording is a native MP4 (fast recorder / WebCodecs)"
   },
   "overLimitModalButton": {
@@ -1054,7 +1054,7 @@
     "description": "Títol d'extensió no compatible a la pestanya"
   },
   "extensionNotSupportedDescription": {
-    "message": "Screenity no era compatible a la teva pestanya anterior. No obstant això, pots començar la gravació aquí i després canviar a la pestanya, però la teva càmera i la barra de ferramentes no seran visibles.",
+    "message": "Screeedit no era compatible a la teva pestanya anterior. No obstant això, pots començar la gravació aquí i després canviar a la pestanya, però la teva càmera i la barra de ferramentes no seran visibles.",
     "description": "Descripció d'extensió no compatible a la pestanya"
   },
   "backupsDescription1": {
@@ -1308,7 +1308,7 @@
     "description": "Button label to go to the dashboard in the popup"
   },
   "welcomePopupTitle": {
-    "message": "Benvingut a Screenity",
+    "message": "Benvingut a Screeedit",
     "description": "Title for the welcome popup shown to new users"
   },
   "welcomePopupDescriptionTop": {
@@ -1516,7 +1516,7 @@
     "description": "Descripció del bàner d'autoallotjament a l'editor"
   },
   "welcomeBackPopupTitle": {
-    "message": "Benvingut de nou a Screenity",
+    "message": "Benvingut de nou a Screeedit",
     "description": "Títol del popup de benvinguda mostrat als usuaris que tornen"
   },
   "welcomeBackProTitle": {
@@ -1696,7 +1696,7 @@
     "description": "Toast shown before the screen picker reopens because system audio could not start and capture is retrying without it"
   },
   "editorRecoveryToast": {
-    "message": "L'enregistrament s'ha desat. L'editor no s'ha obert. Fes clic a la icona de Screenity per tornar-ho a provar.",
+    "message": "L'enregistrament s'ha desat. L'editor no s'ha obert. Fes clic a la icona de Screeedit per tornar-ho a provar.",
     "description": "Toast shown on the active tab when the post-recording editor tab fails to open"
   },
   "stopAckTimeoutToast": {
@@ -1739,7 +1739,7 @@
     "message": "Encara preparant la teva gravació…"
   },
   "editorStuckDescription": {
-    "message": "Screenity està trigant més del normal a carregar la teva gravació. Les teves dades poden seguir en aquest dispositiu. Prova de recuperar-la, o contacta'ns si no torna."
+    "message": "Screeedit està trigant més del normal a carregar la teva gravació. Les teves dades poden seguir en aquest dispositiu. Prova de recuperar-la, o contacta'ns si no torna."
   },
   "editorStuckTryRecover": {
     "message": "Prova de recuperar"
@@ -1766,7 +1766,7 @@
     "message": "No s'ha pogut iniciar la gravació"
   },
   "recordingFailedModalDescription": {
-    "message": "Alguna cosa ha impedit que la gravació s'iniciés. Torna-ho a provar. Si segueix passant, escriu-nos a support@screenity.io."
+    "message": "Alguna cosa ha impedit que la gravació s'iniciés. Torna-ho a provar."
   },
   "editAudioTooLargeTitle": {
     "message": "El fitxer d'àudio és massa gran"
@@ -1886,7 +1886,7 @@
     "description": "Modal title when Google Drive authentication expired or was revoked"
   },
   "driveAuthModalDescription": {
-    "message": "Google no ha permès que Screenity iniciï la sessió. Torna-ho a provar amb un altre compte de Google o descarrega el vídeo. Els comptes d'escola o de feina poden bloquejar-ho.",
+    "message": "Google no ha permès que Screeedit iniciï la sessió. Torna-ho a provar amb un altre compte de Google o descarrega el vídeo. Els comptes d'escola o de feina poden bloquejar-ho.",
     "description": "Modal description when Google Drive authentication expired or was revoked"
   },
   "emptyRecordingTitle": {

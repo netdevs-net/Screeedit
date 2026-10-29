@@ -12,6 +12,7 @@ import {
   EncodedAudioPacketSource,
   type OutputFormat,
 } from "mediabunny";
+import { VideoCutter } from "./videoCutter";
 
 export interface TrimOptions {
   startTime: number;
@@ -23,6 +24,8 @@ export interface TrimOptions {
 }
 
 const TEMP_FILE_PREFIX = "trim-";
+// How far before the requested start a stream-copy keyframe may land.
+const KEYFRAME_SNAP_TOLERANCE_S = 0.1;
 const STALE_AGE_MS = 5 * 60 * 1000;
 
 const sweepStaleTrimFiles = async () => {
@@ -71,6 +74,21 @@ export class VideoTrimmer {
       verifyKeyPackets: true,
     });
     if (!startKey) throw new Error("Trimming failed - no key packet at start");
+
+    // Sparse keyframes (some encoders emit one every few seconds, or only at
+    // 0) make stream-copy silently keep footage before the start handle. Past
+    // a small tolerance, re-encode the range instead so the start is exact.
+    if (
+      targetFormat === "mp4" &&
+      startTime - startKey.timestamp > KEYFRAME_SNAP_TOLERANCE_S
+    ) {
+      return new VideoCutter().keepRange(sourceBlob, {
+        start: startTime,
+        end: endTime,
+        onProgress,
+      });
+    }
+
     const baseTime = startKey.timestamp;
     const endVideoPacket = Number.isFinite(endTime)
       ? await videoSink.getPacket(endTime)

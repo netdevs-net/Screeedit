@@ -1,89 +1,109 @@
-# Screenity
+<p align="center">
+  <img src=".github/readme/logo.svg" alt="Screeedit" height="44">
+</p>
 
-> _✨ Screenity's open source work is sponsored by_
-> ### Recall.ai - API for desktop recording [<img src="https://github.com/user-attachments/assets/eee643f1-1b64-4d14-bb04-498c321fd937" align="right">](https://www.recall.ai/product/desktop-recording-sdk?utm_source=github&utm_medium=sponsorship&utm_campaign=alyssaxuu-screenity)
->
-> If you’re looking for a hosted desktop recording API, consider checking out [Recall.ai](https://www.recall.ai/product/desktop-recording-sdk?utm_source=github&utm_medium=sponsorship&utm_campaign=alyssaxuu-screenity), an API that records Zoom, Google Meet, Microsoft Teams, in-person meetings, and more.
+<h3 align="center">Record your screen. Edit it like a pro. Never upload a thing.</h3>
 
-[![jiewjjc232](https://github.com/alyssaxuu/screenity/assets/7581348/ed55e52e-4adf-442b-b774-6856abacdffb)](https://screenity.io)
+<p align="center">
+  A Chrome screen recorder with a real video editor built in: captions, text and drawing, backdrops, scenes and auto-zoom, all running on your own computer.
+</p>
 
-The free and privacy-friendly screen recorder with no limits 🎥
+<p align="center">
+  <img alt="Chrome extension" src="https://img.shields.io/badge/Chrome-Manifest%20V3-CF5230?logo=googlechrome&logoColor=white">
+  <img alt="Runs locally" src="https://img.shields.io/badge/runs-100%25%20on%20device-29292F">
+  <img alt="No account" src="https://img.shields.io/badge/account-not%20needed-29292F">
+  <img alt="License GPL-3.0" src="https://img.shields.io/badge/license-GPL--3.0-29292F">
+</p>
 
-[Get it now - it's free!](https://chrome.google.com/webstore/detail/screenity-screen-recorder/kbbdabhdfibnancpjfhlkhafgdilcnji)
+<p align="center">
+  <img src=".github/readme/hero.gif" alt="A recording framed in a browser window on an orange gradient, with word-by-word captions" width="800">
+</p>
 
-Screenity is a powerful privacy-friendly screen recorder and annotation tool to make better videos for work, education, and more. You can create stunning product demos, tutorials, presentations, or share feedback with your team - all for free.
+---
 
-<a href="https://www.producthunt.com/posts/screenity?utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-screenity" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=275308&theme=light&period=daily" alt="Screenity - The most powerful screen recorder for Chrome | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-<a href="https://news.ycombinator.com/item?id=25150804" target="_blank"><img height=53 src="https://hackerbadge.now.sh/api?id=25150804&type=orange" alt="Featured on HackerNews"></a>
+## Why Screeedit
 
-> Want to support the project (and the solo developer behind it)?  
->
-> Check out [**Screenity Pro**](https://screenity.io/pro): a privacy-friendly, EU-hosted platform with link sharing, multi-scene editing, zoom keyframes, captions, and more ❤️  
+Most screen recorders stop at "record". Then you export, open a separate editor, re-import, caption it somewhere else, and upload it to yet another service. Screeedit finishes the job where you recorded it.
 
-Made by [Alyssa X](https://alyssax.com)
+- **Private by design.** Recording, editing, speech-to-text and rendering all happen in your browser. Your video stays on your machine unless you download it or save it to your own Google Drive.
+- **No account, no watermark.** Install it and start recording; there's nothing to sign up for.
+- **Edits stay editable.** After you save text and captions into the video, reopen them and keep adjusting. Screeedit re-renders from the original, so nothing gets drawn on twice.
 
-## Table of contents
-- [Screenity](#screenity)
-	- [Table of contents](#table-of-contents)
-	- [Features](#features)
-	- [Self-hosting Screenity](#self-hosting-screenity)
-	- [Creating a development version](#creating-a-development-version)
-		- [Enabling Save to Google Drive](#enabling-save-to-google-drive)
-	- [Acknowledgements](#acknowledgements)
+## What you can do
 
-## Features
+### Text, drawing and effects on a timeline
 
-🎥 Make unlimited recordings of your tab, a specific area, desktop, any application, or camera<br>
-🎙️ Record your microphone or internal audio, and use features like push to talk<br>
-✏️ Annotate by drawing anywhere on the screen, adding text, arrows, shapes, and more<br>
-✨ Use AI-powered camera backgrounds or blur to enhance your recordings<br>
-🔎 Zoom in smoothly in your recordings to focus on specific areas<br>
-🪄 Blur out any sensitive content of any page to keep it private<br>
-✂️ Remove or add audio, cut, trim, or crop your recordings with a comprehensive editor<br>
-👀 Highlight your clicks and cursor, and go in spotlight mode<br>
-⏱️ Set up alarms to automatically stop your recording<br>
-💾 Export as mp4, gif, and webm, or save the video directly to Google Drive to share a link<br>
-⚙️ Set a countdown, hide parts of the UI, or move it anywhere<br>
-🔒 Only you can see your videos, we don’t collect any of your data. You can even go offline!<br>
-💙 No limits, make as many videos as you want, for as long as you want<br> …and much more - all for free & no sign in needed!
+<img src=".github/readme/02-text-drawing.png" alt="Text and drawing editor with a title, arrow and highlight on a timeline">
 
-## Self-hosting Screenity
-> 🛠️ Note: When self-hosted, the extension runs entirely in local-only mode.  
-> No API calls, sign-in flows, or platform features are enabled, nothing is sent anywhere.  
-> Some internal code paths connect to [Screenity Pro](https://screenity.io/pro), but these are only active in the official Chrome Store version.
+Add titles, lower thirds, labels, counters and scrolling credits. Draw with a pen or highlighter, point with arrows, drop in shapes and images. Blur sensitive details, spotlight what matters, or zoom into a region. Every item gets its own bar on the timeline: drag it to move it, stretch it to change how long it stays, and choose how it animates in and out.
 
-You can run Screenity locally without having to install it from the Chrome Store. Here's how:
+### Word-by-word captions
 
-1. Download the latest Build.zip from the [releases page](https://github.com/alyssaxuu/screenity/releases)
-2. Load the extension by pasting `chrome://extensions/` in the address bar, and [enabling developer mode](https://developer.chrome.com/docs/extensions/mv2/faq/#:~:text=You%20can%20start%20by%20turning,a%20packaged%20extension%2C%20and%20more.).
-3. Drag the folder that contains the code (make sure it's a folder and not a ZIP file, so unzip first), or click on the "Load unpacked" button and locate the folder.
-4. That's it, you should now be able to use Screenity locally. [Follow these instructions](#enabling-save-to-google-drive) to set up the Google Drive integration.
+<img src=".github/readme/03-captions.png" alt="Captions panel with karaoke-style captions on the video">
 
-<small>Self-hosting is totally fine for personal, educational, or internal use.
-If you’re thinking of building a commercial product from this, feel free to [reach out](mailto:alyssa@screenity.io), I’m open to chatting 💜</small>
+One click turns speech into captions that light up word by word. Speech recognition runs on your computer with OpenAI's Whisper, so your audio never leaves the device. Pick from five styles (karaoke, highlight box, pop-in, one word, classic), fix any word, restyle everything, and export `.srt` or `.vtt` subtitle files. Prefer your own Whisper server? Point Screeedit at it.
 
-## Creating a development version
+### Backdrops and device frames
 
-> ❗️ Note that the license has changed to [GPLv3](https://github.com/alyssaxuu/screenity/blob/master/LICENSE) for the current MV3 version (Screenity version 3.0.0 and higher). Make sure to read the license and the [Terms of Service](https://screenity.io/en/terms/) regarding intellectual property.
+<img src=".github/readme/04-backdrop.png" alt="Recording framed in a browser window on an orange gradient">
 
-1. Check if your [Node.js](https://nodejs.org/) version is >= **14**.
-2. Clone this repository.
-3. Run `npm install` to install dependencies.
-4. Run `npm start` to start the local development server.
-5. Open `chrome://extensions/` in your browser and [enable developer mode](https://developer.chrome.com/docs/extensions/mv2/faq/#:~:text=You%20can%20start%20by%20turning,a%20packaged%20extension%2C%20and%20more.).
-6. Click **Load unpacked** and select the `build` folder.
-7. The extension should now be available locally.  
-   To rebuild after code changes, run `npm run build`.
+Make a plain recording look finished. Place it on a gradient, a color, your own image or a blurred copy of the video. Frame it in a browser window, a macOS window, a MacBook, an iPad or an iPhone. Switch to 16:9, 9:16, 1:1 or 4:5 for wherever it's going next.
 
-### Enabling Save to Google Drive
+### Scenes
 
-To enable the Google Drive Upload (authorization consent screen) you must change the client_id in the manifest.json file with your linked extension key.
+<img src=".github/readme/05-scenes.png" alt="Scenes editor with a title card and two clips on the timeline">
 
-You can create it accessing [Google Cloud Console](https://console.cloud.google.com/apis/credentials) and selecting Create Credential > OAuth Client ID > Chrome App. To create a persistent extension key, you can follow the steps detailed [here](https://developer.chrome.com/docs/extensions/reference/manifest/key).
+Build a whole video from parts. Split your recording, add title cards and other videos, drag them into order, and choose how each one hands off to the next: cut, fade, slide, wipe, zoom, or a smooth transition that glides from one layout into the next. Every scene can have its own backdrop and a slow zoom or pan.
 
-## Acknowledgements
+### Auto-zoom on your clicks
 
-- Thanks to [HelpKit](https://www.helpkit.so/) for sponsoring this project by hosting the [Screenity Help Center](https://help.screenity.io/).
-- Thanks to [Mei Xuan](https://www.behance.net/meixuanloo) for helping with the Chinese translation of the extension.
+While you record, Screeedit notes where you click. In the editor, one button turns those clicks into zooms on exactly those spots, panning smoothly from one click to the next. Each zoom is an ordinary timeline item you can adjust.
 
-If you need any help, or want to become a Screenity expert, you can browse articles and guides in the [help center](https://help.screenity.io). You can also submit any feedback or ideas in this [form](https://tally.so/r/3ElpXq), or contact through [this page](https://help.screenity.io/contact)
+### Everything a recorder should do
+
+<img src=".github/readme/01-editor.png" alt="Screeedit editor with the recording and the edit menu">
+
+Record a tab, an area, your whole screen, a window or your camera. Capture your microphone and system audio, draw on the screen while you record, and blur your camera background. Trim, cut, crop, add music, then download as MP4, WebM or GIF, or save straight to Google Drive.
+
+## Get started
+
+1. Clone this repository and build it (requires Node.js 24):
+
+   ```bash
+   npm install
+   npm run build:release
+   ```
+
+2. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked**, and choose the `build` folder.
+3. Click the Screeedit icon in your toolbar and start recording. When you stop, your video opens in the editor.
+
+## For developers
+
+Run `npm start` for a watching development build. The editing features live here:
+
+| Feature | Code |
+| --- | --- |
+| Text & drawing, captions, backdrops | `src/pages/EditorApp/annotate/`, `src/pages/EditorApp/layout/annotate/` |
+| Scenes | `src/pages/EditorApp/annotate/scenes.js`, `src/pages/EditorApp/layout/scenes/` |
+| Rendering and export | `src/pages/Editor/utils/annotateVideo.js`, `src/pages/Editor/utils/renderScenes.js` |
+| Click log for auto-zoom | `src/pages/Background/messaging/handlers.js`, `src/pages/Content/cursor/trackClicks.js` |
+
+## Credits
+
+**Screeedit is built on [Screenity](https://github.com/alyssaxuu/screenity), created and maintained by [Alyssa X](https://alyssax.com).** Screenity's recorder, its original editor, its annotation tools and most of this codebase are her work. Screeedit started from Screenity 4.7.2 in October 2026 and adds the editing features described above; the full list of changes is in the commit history.
+
+Screeedit is an independent project, not affiliated with or endorsed by Screenity or Alyssa X. Screenity's name and logo belong to their owner. If Screeedit is useful to you, please support the original project too: [Screenity](https://screenity.io), [Screenity Pro](https://screenity.io/pro), or [sponsor Alyssa on GitHub](https://github.com/sponsors/alyssaxuu).
+
+Screeedit also stands on:
+
+- [OpenAI Whisper](https://github.com/openai/whisper) speech recognition (MIT), run in the browser with [Transformers.js](https://github.com/huggingface/transformers.js) (Apache-2.0) and [ONNX Runtime Web](https://github.com/microsoft/onnxruntime) (MIT)
+- [Mediabunny](https://github.com/Vanilagy/mediabunny) for decoding and encoding video (MPL-2.0)
+- [Fabric.js](https://github.com/fabricjs/fabric.js) for the drawing canvas (MIT)
+
+Every bundled third-party package and its license is listed in [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md).
+
+## License
+
+Screeedit is licensed under the [GNU General Public License v3.0](./LICENSE), the same license as Screenity. As required by GPL-3.0 §5, this is a modified version of Screenity; the modifications and their dates are recorded in this README and the git history.
+
+<p align="center"><sub>Built by <a href="https://github.com/netdevs-net">NetDevs</a></sub></p>

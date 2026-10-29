@@ -217,6 +217,11 @@ const RecordingTab = (props) => {
               <span>{chrome.i18n.getMessage("cameraType")}</span>
             </div>
           </Tabs.Trigger>
+          {/* Multi-scene recording is a Screenity Pro (cloud) feature; signed
+              out it only showed an upsell, so the tab is hidden. Scenes can be
+              combined in the editor instead. */}
+          {contentState.isLoggedIn && (
+            <>
           <div className="TabsTriggerSpacer"></div>
           <div className="TabsTrigger">
             <TooltipWrap
@@ -364,6 +369,8 @@ const RecordingTab = (props) => {
               </div>
             </TooltipWrap>
           </div>
+            </>
+          )}
           {/* <Tabs.Trigger
             className="TabsTrigger"
             value="mockup"

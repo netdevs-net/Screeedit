@@ -234,6 +234,12 @@ const config = {
   },
   module: {
     rules: [
+      // onnxruntime-web references its .wasm via new URL(); captions point it
+      // at the copy in vendor/ort instead, so don't emit a second 26 MB file.
+      {
+        test: /node_modules[\\/](onnxruntime-web|@huggingface[\\/]transformers)[\\/]/,
+        parser: { url: false },
+      },
       {
         test: /\.(css|scss)$/,
         use: [
@@ -370,6 +376,15 @@ const config = {
           to: path.join(__dirname, "build/audioGapWorklet.js"),
           force: true,
         },
+        // ONNX runtime for in-browser Whisper captions. Loaded by URL from
+        // the worker, so copied rather than bundled.
+        ...(isBsBuild
+          ? []
+          : ["mjs", "wasm"].map((ext) => ({
+              from: `node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.${ext}`,
+              to: path.join(__dirname, `build/vendor/ort/ort-wasm-simd-threaded.asyncify.${ext}`),
+              force: true,
+            }))),
         {
           from: "THIRD_PARTY_NOTICES.md",
           to: path.join(__dirname, "build/THIRD_PARTY_NOTICES.md"),

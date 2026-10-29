@@ -5,6 +5,9 @@ import React, { useEffect, useRef, useContext, Suspense, lazy } from "react";
 // Editor (trim/cut/timeline UI) only mounts when user enters edit mode.
 // Initial open is "player" mode; defer Editor + its TrimUI dependencies.
 const Editor = lazy(() => import("./layout/editor/Editor"));
+// Text & drawing overlays mode, also loaded on demand.
+const Annotate = lazy(() => import("./layout/annotate/Annotate"));
+const Scenes = lazy(() => import("./layout/scenes/Scenes"));
 import Player from "./layout/player/Player";
 import Modal from "./components/global/Modal";
 import Toast from "./components/global/Toast";
@@ -201,7 +204,20 @@ const EditorApp = () => {
             <Editor />
           </Suspense>
         )}
-      {contentState.mode != "edit" && contentState.ready && <Player />}
+      {contentState.ready && contentState.mode === "annotate" && (
+        <Suspense fallback={null}>
+          <Annotate />
+        </Suspense>
+      )}
+      {contentState.ready && contentState.mode === "scenes" && (
+        <Suspense fallback={null}>
+          <Scenes />
+        </Suspense>
+      )}
+      {contentState.mode != "edit" &&
+        contentState.mode != "annotate" &&
+        contentState.mode != "scenes" &&
+        contentState.ready && <Player />}
       {!contentState.ready &&
         new URLSearchParams(window.location.search).get("reviewPreview") !==
           null && <ReviewBanner />}

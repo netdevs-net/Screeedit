@@ -71,4 +71,6 @@ const ProBanner = () => {
   );
 };
 
-export default ProBanner;
+// Points at Screenity's help center / paid plan / store listing, so only the
+// cloud build shows it.
+export default CLOUD_FEATURES_ENABLED ? ProBanner : () => null;

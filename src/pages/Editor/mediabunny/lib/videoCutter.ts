@@ -15,7 +15,13 @@ import {
 import { videoConverter } from "./videoConverter";
 
 export class VideoCutter {
-  async cut(sourceBlob, { cutStart, cutEnd, onProgress }) {
+  // Frame-accurate re-encode of [start, end]. Used by the trimmer when the
+  // nearest keyframe sits too far before the requested start for stream-copy.
+  async keepRange(sourceBlob, { start, end, onProgress }) {
+    return this.cut(sourceBlob, { keepSegments: [[start, end]], onProgress });
+  }
+
+  async cut(sourceBlob, { cutStart, cutEnd, keepSegments, onProgress }) {
     const total = await this.getDuration(sourceBlob);
 
     const input = new Input({
@@ -53,10 +59,12 @@ export class VideoCutter {
     await output.start();
 
     let outPts = 0;
-    const totalSegments = [
-      [0, cutStart],
-      [cutEnd, total],
-    ];
+    const totalSegments = keepSegments
+      ? keepSegments.map(([s, e]) => [s, Math.min(e, total)])
+      : [
+          [0, cutStart],
+          [cutEnd, total],
+        ];
     let processedTime = 0;
 
     const debugLog = process.env.SCREENITY_DEV_MODE === "true";

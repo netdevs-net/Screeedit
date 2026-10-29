@@ -145,4 +145,7 @@ const ReviewBanner = () => {
   );
 };
 
-export default ReviewBanner;
+// Points at Screenity's help center / paid plan / store listing, so only the
+// cloud build shows it.
+const IS_CLOUD_BUILD = process.env.SCREENITY_ENABLE_CLOUD_FEATURES === "true";
+export default IS_CLOUD_BUILD ? ReviewBanner : () => null;

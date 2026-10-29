@@ -17,6 +17,13 @@ import AudioUI from "../editor/AudioUI";
 
 import { ContentStateContext } from "../../context/ContentState";
 
+// Chrome can keep serving an unpacked extension's old _locales after a
+// reload, so strings added since come back empty. Fall back to English.
+// The upgrade/pricing links lead to Screenity's paid plan.
+const IS_CLOUD_BUILD = process.env.SCREENITY_ENABLE_CLOUD_FEATURES === "true";
+
+const msg = (key, fallback) => chrome.i18n.getMessage(key) || fallback;
+
 const RightPanel = () => {
   const [contentState, setContentState] = useContext(ContentStateContext);
   const contentStateRef = useRef(contentState);
@@ -268,6 +275,30 @@ const RightPanel = () => {
     setContentState((prevContentState) => ({
       ...prevContentState,
       mode: "crop",
+    }));
+  };
+
+  const handleScenes = () => {
+    if (
+      contentState.duration > contentState.editLimit &&
+      !contentState.override
+    )
+      return;
+    if (!contentState.mp4ready) return;
+    setContentState((prev) => ({ ...prev, mode: "scenes" }));
+  };
+
+  const handleAnnotate = () => {
+    if (
+      contentState.duration > contentState.editLimit &&
+      !contentState.override
+    )
+      return;
+    if (!contentState.mp4ready) return;
+
+    setContentState((prevContentState) => ({
+      ...prevContentState,
+      mode: "annotate",
     }));
   };
 
@@ -657,7 +688,7 @@ const RightPanel = () => {
                       : chrome.i18n.getMessage("videoProcessingLabelDescription")}
                   </div>
                 </div>
-                {!contentState.isFfmpegRunning && (
+                {!contentState.isFfmpegRunning && IS_CLOUD_BUILD && (
                 <div
                   className={styles.buttonRight}
                   onClick={() => {
@@ -814,6 +845,74 @@ const RightPanel = () => {
                       ? getNotAvailableLabel()
                       : contentState.mp4ready
                       ? chrome.i18n.getMessage("cropButtonDescription")
+                      : getPreparingLabel()}
+                  </div>
+                </div>
+                <div className={styles.buttonRight}>
+                  <ReactSVG src={URL + "editor/icons/right-arrow.svg"} />
+                </div>
+              </div>
+              <div
+                role="button"
+                className={styles.button}
+                onClick={handleAnnotate}
+                data-testid="open-annotate"
+                disabled={
+                  (contentState.duration > contentState.editLimit &&
+                    !contentState.override) ||
+                  !contentState.mp4ready ||
+                  contentState.noffmpeg
+                }
+              >
+                <div className={styles.buttonLeft}>
+                  <ReactSVG src={URL + "editor/icons/pencil.svg"} />
+                </div>
+                <div className={styles.buttonMiddle}>
+                  <div className={styles.buttonTitle}>
+                    {msg("annotateButtonTitle", "Text & drawing")}
+                  </div>
+                  <div className={styles.buttonDescription}>
+                    {contentState.updateChrome ||
+                    contentState.noffmpeg ||
+                    (contentState.duration > contentState.editLimit &&
+                      !contentState.override)
+                      ? getNotAvailableLabel()
+                      : contentState.mp4ready
+                      ? msg("annotateButtonDescription", "Add text, drawings, captions and backdrops")
+                      : getPreparingLabel()}
+                  </div>
+                </div>
+                <div className={styles.buttonRight}>
+                  <ReactSVG src={URL + "editor/icons/right-arrow.svg"} />
+                </div>
+              </div>
+              <div
+                role="button"
+                className={styles.button}
+                onClick={handleScenes}
+                data-testid="open-scenes"
+                disabled={
+                  (contentState.duration > contentState.editLimit &&
+                    !contentState.override) ||
+                  !contentState.mp4ready ||
+                  contentState.noffmpeg
+                }
+              >
+                <div className={styles.buttonLeft}>
+                  <ReactSVG src={URL + "editor/icons/scenes.svg"} />
+                </div>
+                <div className={styles.buttonMiddle}>
+                  <div className={styles.buttonTitle}>
+                    {msg("scenesButtonTitle", "Scenes")}
+                  </div>
+                  <div className={styles.buttonDescription}>
+                    {contentState.updateChrome ||
+                    contentState.noffmpeg ||
+                    (contentState.duration > contentState.editLimit &&
+                      !contentState.override)
+                      ? getNotAvailableLabel()
+                      : contentState.mp4ready
+                      ? msg("scenesButtonDescription", "Combine clips and titles with transitions")
                       : getPreparingLabel()}
                   </div>
                 </div>

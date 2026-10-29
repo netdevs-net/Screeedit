@@ -484,14 +484,18 @@ const PopupContainer = (props) => {
               open={open}
               setOpen={setOpen}
             />
-            <div
-              style={{ marginBottom: "-4px", cursor: "pointer" }}
-              onClick={() => {
-                window.open(URL, "_blank");
-              }}
-            >
-              <HelpIconPopup />
-            </div>
+            {/* Help links go to Screenity's help center, so only the cloud
+                build shows them. */}
+            {isCloudBuild && (
+              <div
+                style={{ marginBottom: "-4px", cursor: "pointer" }}
+                onClick={() => {
+                  window.open(URL, "_blank");
+                }}
+              >
+                <HelpIconPopup />
+              </div>
+            )}
             <div
               className="popup-control popup-close"
               onClick={() => {
@@ -678,12 +682,27 @@ const PopupContainer = (props) => {
                   <RecordingTab shadowRef={props.shadowRef} />
                 </Tabs.Content>
                 <Tabs.Content className="TabsContent tl" value="dashboard">
-                  <VideosTab shadowRef={props.shadowRef} />
+                  {/* The video library is part of Screenity's cloud service.
+                      Locally, recordings open straight in the editor. */}
+                  {isCloudBuild ? (
+                    <VideosTab shadowRef={props.shadowRef} />
+                  ) : (
+                    <div className="LocalVideosNote">
+                      <div className="LocalVideosNoteTitle">
+                        Your videos stay on this device
+                      </div>
+                      <div className="LocalVideosNoteText">
+                        When you stop a recording, it opens in the editor. Edit
+                        it there, then download it as MP4, WebM or GIF, or save
+                        it to Google Drive.
+                      </div>
+                    </div>
+                  )}
                 </Tabs.Content>
               </Tabs.Root>
             )}
           </div>
-          {contentState.settingsOpen && (
+          {isCloudBuild && contentState.settingsOpen && (
             <div
               className="HelpSection"
               onClick={() => {
