@@ -1893,7 +1893,7 @@ export const setupHandlers = () => {
     ),
   );
   registerMessage("open-home", () =>
-    createTab("https://webdevs.net/", true),
+    createTab("https://github.com/netdevs-net", true),
   );
   registerMessage("report-bug", async (message) => {
     const qs = await supportContextQuery({

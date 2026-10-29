@@ -64,4 +64,4 @@ The full list of bundled third-party code and its licenses is in [THIRD_PARTY_NO
 
 Like Screenity, Screeedit is licensed under the [GNU General Public License v3.0](./LICENSE). Under GPL-3.0 §5, this notice states that the work has been modified from Screenity; the date of modification and the changes are recorded in this README and the git history.
 
-Built by [Web Devs](https://webdevs.net).
+Built by [NetDevs](https://github.com/netdevs-net).
